@@ -44,9 +44,9 @@
                         </a>
                     </li>
                     <li>
-                        <a href="{{ route('admin.permissions') }}">
-                            <i class="fa fa-key" aria-hidden="true"></i>
-                            {{ __('views.backend.section.navigation.menu_1_2') }}
+                        <a href="{{ route('materie') }}">
+                            <i class="fa fa-list" aria-hidden="true"></i>
+                            Materie
                         </a>
                     </li>
                 </ul>
