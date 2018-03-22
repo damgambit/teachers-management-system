@@ -43,10 +43,25 @@
                             {{ __('views.backend.section.navigation.menu_1_1') }}
                         </a>
                     </li>
+                    
                     <li>
                         <a href="{{ route('materie') }}">
                             <i class="fa fa-list" aria-hidden="true"></i>
                             Materie
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="{{ route('classi_concorso') }}">
+                            <i class="fa fa-list" aria-hidden="true"></i>
+                            Classi Concorso
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="{{ route('docenti') }}">
+                            <i class="fa fa-list" aria-hidden="true"></i>
+                            Docenti
                         </a>
                     </li>
                 </ul>

@@ -75,6 +75,30 @@ Route::get('/', 'HomeController@index');
  *  Routes delle materie
  */
 Route::get('materie', 'MateriaController@index')->name('materie');
+Route::post('materia', 'MateriaController@create')->name('create_materia');
+Route::get('materia/del/{materia_id}', 'MateriaController@delete')->name('delete_materia');
+Route::get('materia/{materia_id}', 'MateriaController@show')->name('info_materia');
+
+
+/*
+ *  Routes delle classi concorso
+ */
+Route::get('classi_concorso', 'ClassiConcorsoController@index')->name('classi_concorso');
+Route::post('classi_concorso', 'ClassiConcorsoController@create')->name('create_classi_concorso');
+Route::get('classi_concorso/del/{classi_concorso_id}', 'ClassiConcorsoController@delete')->name('delete_classi_concorso');
+Route::get('classi_concorso/{classi_concorso_id}', 'ClassiConcorsoController@show')->name('materie_classi_concorso');
+Route::post('classi_concorso/add_cc_materia', 'ClassiConcorsoController@add_ccmateria')->name('add_ccmateria');
+Route::get('classi_concorso/delete_cc_materia/{classi_concorso_id}/{materia_id}', 'ClassiConcorsoController@delete_ccmateria')->name('delete_ccmateria');
+
+
+
+/*
+ *  Routes delle materie
+ */
+Route::get('docenti', 'DocenteController@index')->name('docenti');
+Route::post('docenti', 'DocenteController@create')->name('create_materia');
+Route::get('docenti/del/{docenti_id}', 'DocenteController@delete')->name('delete_docenti');
+Route::get('docenti/{docenti_id}', 'DocenteController@show')->name('info_docenti');
 
 
 /**
