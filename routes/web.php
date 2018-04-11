@@ -93,13 +93,20 @@ Route::get('classi_concorso/delete_cc_materia/{classi_concorso_id}/{materia_id}'
 
 
 /*
- *  Routes delle materie
+ *  Routes dei docenti
  */
 Route::get('docenti', 'DocenteController@index')->name('docenti');
-Route::post('docenti', 'DocenteController@create')->name('create_materia');
+Route::post('docenti', 'DocenteController@create')->name('create_docenti');
 Route::get('docenti/del/{docenti_id}', 'DocenteController@delete')->name('delete_docenti');
 Route::get('docenti/{docenti_id}', 'DocenteController@show')->name('info_docenti');
 
+/*
+ *  Routes dei motivi
+ */
+Route::get('motivi', 'MotivoController@index')->name('motivi');
+Route::post('motivi', 'MotivoController@create')->name('create_motivi');
+Route::get('motivi/del/{motivi_id}', 'MotivoController@delete')->name('delete_motivi');
+Route::get('motivi/{motivi_id}', 'MotivoController@show')->name('info_motivi');
 
 /**
  * Membership

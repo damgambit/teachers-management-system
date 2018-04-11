@@ -64,6 +64,13 @@
                             Docenti
                         </a>
                     </li>
+
+                    <li>
+                        <a href="{{ route('motivi') }}">
+                            <i class="fa fa-list" aria-hidden="true"></i>
+                            Motivi
+                        </a>
+                    </li>
                 </ul>
             </div>
             <div class="menu_section">
@@ -91,17 +98,7 @@
                     </li>
                 </ul>
             </div>
-            <div class="menu_section">
-                <h3>{{ __('views.backend.section.navigation.sub_header_3') }}</h3>
-                <ul class="nav side-menu">
-                  <li>
-                      <a href="http://netlicensing.io/?utm_source=Laravel_Boilerplate&utm_medium=github&utm_campaign=laravel_boilerplate&utm_content=credits" target="_blank" title="Online Software License Management"><i class="fa fa-lock" aria-hidden="true"></i>NetLicensing</a>
-                  </li>
-                  <li>
-                      <a href="https://photolancer.zone/?utm_source=Laravel_Boilerplate&utm_medium=github&utm_campaign=laravel_boilerplate&utm_content=credits" target="_blank" title="Individual digital content for your next campaign"><i class="fa fa-camera-retro" aria-hidden="true"></i>Photolancer Zone</a>
-                  </li>
-                </ul>
-            </div>
+           
         </div>
         <!-- /sidebar menu -->
     </div>

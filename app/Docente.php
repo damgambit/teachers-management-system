@@ -4,6 +4,8 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+use App\ClassiConcorso;
+
 class Docente extends Model
 {
     
@@ -20,7 +22,7 @@ class Docente extends Model
 
 	{
 
-		return $this->belongsTo('App\ClassiConcorso');
+		return ClassiConcorso::where(['id' => $this->classi_concorso_id]);
 
 	}
 
