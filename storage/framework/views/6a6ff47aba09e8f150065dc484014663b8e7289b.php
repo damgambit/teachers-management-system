@@ -73,6 +73,13 @@
                             Motivi
                         </a>
                     </li>
+
+                    <li>
+                        <a href="<?php echo e(route('permessi')); ?>">
+                            <i class="fa fa-list" aria-hidden="true"></i>
+                            Permessi
+                        </a>
+                    </li>
                 </ul>
             </div>
             <div class="menu_section">

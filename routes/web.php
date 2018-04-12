@@ -108,6 +108,20 @@ Route::post('motivi', 'MotivoController@create')->name('create_motivi');
 Route::get('motivi/del/{motivi_id}', 'MotivoController@delete')->name('delete_motivi');
 Route::get('motivi/{motivi_id}', 'MotivoController@show')->name('info_motivi');
 
+
+/*
+ *  Routes dei permessi
+ */
+Route::get('permessi', 'PermessoController@index')->name('permessi');
+Route::post('permessi', 'PermessoController@create')->name('create_permessi');
+Route::get('permessi/del/{permessi_id}', 'PermessoController@delete')->name('delete_permessi');
+Route::get('permessi/{permessi_id}', 'PermessoController@show')->name('info_permessi');
+
+
+
+
+
+
 /**
  * Membership
  */

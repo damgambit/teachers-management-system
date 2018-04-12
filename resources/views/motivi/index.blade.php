@@ -13,7 +13,7 @@
                      
                   <div class="form-group">
                     <label for="descrizione">Descrizione</label>
-                    <input type="text" class="form-control" name="descrizione" placeholder="Inserisci la descrizione...">
+                    <input type="text" class="form-control" name="descrizione" placeholder="Inserisci la descrizione..." required>
                   </div>
                   
                   {{csrf_field()}}

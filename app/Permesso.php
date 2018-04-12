@@ -30,7 +30,7 @@ class Permesso extends Model
    	{
 
 
-   		return $this->belongsTo('App\Motivo');s
+   		return $this->belongsTo('App\Motivo');
 
 
    	}

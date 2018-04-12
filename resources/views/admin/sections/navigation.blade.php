@@ -71,6 +71,13 @@
                             Motivi
                         </a>
                     </li>
+
+                    <li>
+                        <a href="{{ route('permessi') }}">
+                            <i class="fa fa-list" aria-hidden="true"></i>
+                            Permessi
+                        </a>
+                    </li>
                 </ul>
             </div>
             <div class="menu_section">
