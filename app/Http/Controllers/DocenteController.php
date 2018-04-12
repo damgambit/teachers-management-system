@@ -35,8 +35,6 @@ class DocenteController extends Controller
     	$request->validate([
     		'nome' => 'required',
     		'cognome' => 'required',
-    		'email' => 'required:email',
-    		'cellulare' => 'required',
     		'cc' => 'required'
     	]);
 

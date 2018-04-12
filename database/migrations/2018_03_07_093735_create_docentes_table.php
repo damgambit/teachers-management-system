@@ -17,8 +17,8 @@ class CreateDocentesTable extends Migration
             $table->increments('id');
             $table->string('nome');
             $table->string('cognome');
-            $table->string('cellulare');
-            $table->string('email');
+            $table->string('cellulare')->nullable();
+            $table->string('email')->nullable();
 
             $table->integer('classi_concorso_id')->unsigned();
 
