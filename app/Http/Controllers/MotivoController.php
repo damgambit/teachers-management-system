@@ -28,5 +28,29 @@ class MotivoController extends Controller
 	}
 
 
+
+	public function create(Request $request) 
+
+	{
+
+
+		$motivo = Motivo::create(['descrizione' => $request->descrizione]);
+
+
+		return redirect()->back()->withInput();
+
+	}
+
+
+	public function delete($motivi_id)
+
+	{
+
+		Motivo::find($motivi_id)->delete();
+
+		return redirect()->back()->withInput();
+
+	}
+
    
 }

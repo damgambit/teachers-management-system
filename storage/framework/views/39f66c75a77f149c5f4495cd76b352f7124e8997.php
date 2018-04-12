@@ -4,14 +4,14 @@
 
         <div class="col-lg-7">
 
-            <form action="<?php echo e(route('create_docenti')); ?>" method="post">
+            <form action="<?php echo e(route('create_motivi')); ?>" method="post">
               <fieldset>
      
-                <h2>Nuovo Docente</h2>                 
+                <h2>Nuovo Motivo</h2>                 
                      
                   <div class="form-group">
-                    <label for="nome">Nome</label>
-                    <input type="text" class="form-control" name="nome" placeholder="Inserisci il nome...">
+                    <label for="descrizione">Descrizione</label>
+                    <input type="text" class="form-control" name="descrizione" placeholder="Inserisci la descrizione...">
                   </div>
                   
                   <?php echo e(csrf_field()); ?>
@@ -40,29 +40,23 @@
             <table class="table table-bordered table-hover table-condensed table-striped">
 
                 <thead>
-                    <th>Nome</th>
-                    <th>Cognome</th>
+
+                    <th>Descrizione</th>
+                    <th>Info</th>
+                    <th>Elimina</th>
                     
                 </thead>
 
                 <tbody>
-                    <?php $__currentLoopData = [1, 2]; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $docente): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                    <?php $__currentLoopData = $motivos; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $motivo): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        
                         <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
 
-                            <td class="text-center">
-                                <a href="<?php echo e(route('materie_classi_concorso', 1)); ?>">
-                                    <button class="btn btn-warning">
-                                        
-                                    </button>
-                                </a>
-                            </td>
+                            <td><?php echo e($motivo->descrizione); ?></td>
+
                             
                             <td class="text-center">
-                                <a href="<?php echo e(route('materie_classi_concorso', 1)); ?>">
+                                <a href="<?php echo e(route('info_motivi', $motivo->id)); ?>">
                                     <button class="btn btn-info">
                                         <i class="fa fa-info"></i>
                                     </button>
@@ -70,13 +64,15 @@
                             </td>
 
                             <td class="text-center">
-                                <a href="<?php echo e(route('delete_docenti', 1)); ?>">
+                                <a href="<?php echo e(route('delete_motivi', $motivo->id)); ?>">
                                     <button class="btn btn-danger">
                                         <i class="fa fa-trash"></i>
                                     </button>
                                 </a>
                             </td>
+
                         </tr>
+                    
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </tbody>
 

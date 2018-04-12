@@ -6,14 +6,14 @@
 
         <div class="col-lg-7">
 
-            <form action="{{route('create_docenti')}}" method="post">
+            <form action="{{route('create_motivi')}}" method="post">
               <fieldset>
      
-                <h2>Nuovo Docente</h2>                 
+                <h2>Nuovo Motivo</h2>                 
                      
                   <div class="form-group">
-                    <label for="nome">Nome</label>
-                    <input type="text" class="form-control" name="nome" placeholder="Inserisci il nome...">
+                    <label for="descrizione">Descrizione</label>
+                    <input type="text" class="form-control" name="descrizione" placeholder="Inserisci la descrizione...">
                   </div>
                   
                   {{csrf_field()}}
@@ -41,29 +41,23 @@
             <table class="table table-bordered table-hover table-condensed table-striped">
 
                 <thead>
-                    <th>Nome</th>
-                    <th>Cognome</th>
+
+                    <th>Descrizione</th>
+                    <th>Info</th>
+                    <th>Elimina</th>
                     
                 </thead>
 
                 <tbody>
-                    @foreach([1, 2] as $docente)
+                    @foreach($motivos as $motivo)
+                        
                         <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
 
-                            <td class="text-center">
-                                <a href="{{route('materie_classi_concorso', 1)}}">
-                                    <button class="btn btn-warning">
-                                        
-                                    </button>
-                                </a>
-                            </td>
+                            <td>{{$motivo->descrizione}}</td>
+
                             
                             <td class="text-center">
-                                <a href="{{route('materie_classi_concorso', 1)}}">
+                                <a href="{{route('info_motivi', $motivo->id)}}">
                                     <button class="btn btn-info">
                                         <i class="fa fa-info"></i>
                                     </button>
@@ -71,13 +65,15 @@
                             </td>
 
                             <td class="text-center">
-                                <a href="{{route('delete_docenti', 1)}}">
+                                <a href="{{route('delete_motivi', $motivo->id)}}">
                                     <button class="btn btn-danger">
                                         <i class="fa fa-trash"></i>
                                     </button>
                                 </a>
                             </td>
+
                         </tr>
+                    
                     @endforeach
                 </tbody>
 
