@@ -80,6 +80,13 @@
                             Permessi
                         </a>
                     </li>
+
+                    <li>
+                        <a href="<?php echo e(route('sezioni')); ?>">
+                            <i class="fa fa-list" aria-hidden="true"></i>
+                            Sezioni
+                        </a>
+                    </li>
                 </ul>
             </div>
             <div class="menu_section">

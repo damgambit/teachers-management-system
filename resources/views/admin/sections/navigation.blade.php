@@ -78,6 +78,13 @@
                             Permessi
                         </a>
                     </li>
+
+                    <li>
+                        <a href="{{ route('sezioni') }}">
+                            <i class="fa fa-list" aria-hidden="true"></i>
+                            Sezioni
+                        </a>
+                    </li>
                 </ul>
             </div>
             <div class="menu_section">

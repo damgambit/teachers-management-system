@@ -118,6 +118,15 @@ Route::get('permessi/del/{permessi_id}', 'PermessoController@delete')->name('del
 Route::get('permessi/{permessi_id}', 'PermessoController@show')->name('info_permessi');
 
 
+/*
+ *  Routes dei permessi
+ */
+Route::get('sezioni', 'SezioneController@index')->name('sezioni');
+Route::post('sezioni', 'SezioneController@create')->name('create_sezioni');
+Route::get('sezioni/del/{sezioni_id}', 'SezioneController@delete')->name('delete_sezioni');
+Route::get('sezioni/{sezioni_id}', 'SezioneController@show')->name('info_sezioni');
+
+
 
 
 
