@@ -21,6 +21,10 @@ class UsersRolesSeeder extends Seeder
         $data = [
             'admin.laravel@labs64.com' => ['administrator', 'authenticated'],
             'admin@admin.com' => ['administrator', 'authenticated'],
+            'stella@admin.com' => ['administrator', 'authenticated'],
+            'gabriele@admin.com' => ['administrator', 'authenticated'],
+            'matteo@admin.com' => ['administrator', 'authenticated'],
+            'manuel@admin.com' => ['administrator', 'authenticated'],
             'demo.laravel@labs64.com' => 'authenticated',
         ];
 
