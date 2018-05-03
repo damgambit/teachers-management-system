@@ -11,20 +11,26 @@ class SezioneController extends Controller
 
 {
     
+
 	public function index()
 
 	{
 
 		
+
 		$seziones = Sezione::all();
 
 
+		
 		return view('sezioni.index', ['seziones' => $seziones]);
+
 
 
 	}
 
 
+
+	
 
 	public function create(Request $request) 
 
@@ -33,7 +39,6 @@ class SezioneController extends Controller
 
 		$request->validate([
     		'sigla' => 'required',
-    		'descrizione' => 'required',
     	]);
 
     	$sezione = Sezione::create([
@@ -47,14 +52,20 @@ class SezioneController extends Controller
 	}
 	
 
+
+
+
 	public function delete($sezioni_id)
 
 	{
 
+		
 		Sezione::find($sezioni_id)->delete();
 
 
+
 		return redirect()->back()->withInput();
+
 
 	}
 

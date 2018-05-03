@@ -119,7 +119,7 @@ Route::get('permessi/{permessi_id}', 'PermessoController@show')->name('info_perm
 
 
 /*
- *  Routes dei permessi
+ *  Routes delle sezioni
  */
 Route::get('sezioni', 'SezioneController@index')->name('sezioni');
 Route::post('sezioni', 'SezioneController@create')->name('create_sezioni');
@@ -127,6 +127,25 @@ Route::get('sezioni/del/{sezioni_id}', 'SezioneController@delete')->name('delete
 Route::get('sezioni/{sezioni_id}', 'SezioneController@show')->name('info_sezioni');
 
 
+/*
+ *  Routes delle classi
+ */
+Route::get('classi', 'ClasseController@index')->name('classi');
+Route::post('classi', 'ClasseController@create')->name('create_classi');
+Route::get('classi/del/{classi_id}', 'ClasseController@delete')->name('delete_classi');
+Route::get('classi/{classi_id}', 'ClasseController@show')->name('info_classi');
+
+
+/*
+ *  Routes delle classi
+ */
+Route::get('orari', 'OrarioController@index')->name('orari');
+
+Route::post('orari', 'OrarioController@create')->name('create_orari');
+Route::post('orari', 'OrarioController@create_orario_doc')->name('create_orario_doc');
+
+Route::get('orari/del/{orari_id}', 'OrarioController@delete')->name('delete_orari');
+Route::get('orari/{orari_id}', 'OrarioController@show')->name('info_orari');
 
 
 

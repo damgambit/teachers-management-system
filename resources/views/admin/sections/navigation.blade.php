@@ -85,6 +85,21 @@
                             Sezioni
                         </a>
                     </li>
+
+                    <li>
+                        <a href="{{ route('classi') }}">
+                            <i class="fa fa-list" aria-hidden="true"></i>
+                            Classi
+                        </a>
+                    </li>
+
+
+                    <li>
+                        <a href="{{ route('orari') }}">
+                            <i class="fa fa-list" aria-hidden="true"></i>
+                            Orario
+                        </a>
+                    </li>
                 </ul>
             </div>
             <div class="menu_section">

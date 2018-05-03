@@ -4,20 +4,52 @@
 
         <div class="col-lg-7">
 
-            <form action="<?php echo e(route('create_sezioni')); ?>" method="post">
+            <form action="<?php echo e(route('create_classi')); ?>" method="post">
               <fieldset>
      
-                <h2>Nuova Sezione</h2>                 
+                <h2>Nuova Classe</h2>                 
                      
                   <div class="form-group">
-                    <label for="sigla">Sigla</label>
-                    <input type="text" class="form-control" name="sigla" placeholder="Inserisci la sigla..." required>
+                    <label for="anno">Anno</label>
+                    <select class="form-control" name="anno" required>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
                   </div>
 
+
                   <div class="form-group">
-                    <label for="descrizione">Descrizione</label>
-                    <input type="text" class="form-control" name="descrizione" placeholder="Inserisci la descrizione...">
+                    <label for="istituto">Istituto</label>
+                    <select class="form-control" name="istituto" required>
+                        <option value="1">LT</option>
+                        <option value="2">DV</option>
+                    </select>
+                  </div>
+                     
+                  <div class="form-group">
+                    <label for="aula">Aula</label>
+                    <input type="text" class="form-control" 
+                           name="aula" placeholder="Inserisci il numero dell'aula" required>
+                  </div> 
+                     
+                  
+                  <div class="form-group">
+                    <label for="sezione_id">Sezione</label>
+                    <select class="form-control" name="sezione_id" required>
+                        <?php $__currentLoopData = $sezionis; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $sezioni): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <option value="<?php echo e($sezioni->id); ?>">
+                                <?php echo e($sezioni->sigla); ?>
+
+                            </option>
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                    </select>
                   </div>  
+
+
+
 
                   <?php echo e(csrf_field()); ?>
 
@@ -45,21 +77,26 @@
             <table class="table table-bordered table-hover table-condensed table-striped">
 
                 <thead>
-                    <th>Sigla</th>
-                    <th>Descrizione</th>
+                    <th>Anno</th>
+                    <th>Sezione</th>
+                    <th>Aula</th>
+                    <th>Istituto</th>
+
                     <th>Modifica</th>
                     <th>Elimina</th>
                 </thead>
 
                 <tbody>
-                    <?php $__currentLoopData = $seziones; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $sezione): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                    <?php $__currentLoopData = $classes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $classe): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <tr>
-                            <td><?php echo e($sezione->sigla); ?></td>
-                            <td><?php echo e($sezione->descrizione); ?></td>
-                            
+                            <td><?php echo e($classe->anno); ?></td>
+                            <td><?php echo e($classe->sezione()->first()->sigla); ?></td>
+                            <td><?php echo e($classe->aula); ?></td>
+                            <td><?php echo e($classe->istituto); ?></td>
+
                             
                             <td class="text-center">
-                                <a href="<?php echo e(route('info_sezioni', $sezione->id)); ?>">
+                                <a href="<?php echo e(route('info_classi', $classe->id)); ?>">
                                     <button class="btn btn-info">
                                         <i class="fa fa-info"></i>
                                     </button>
@@ -67,7 +104,7 @@
                             </td>
 
                             <td class="text-center">
-                                <a href="<?php echo e(route('delete_sezioni', $sezione->id)); ?>">
+                                <a href="<?php echo e(route('delete_classi', $classe->id)); ?>">
                                     <button class="btn btn-danger">
                                         <i class="fa fa-trash"></i>
                                     </button>

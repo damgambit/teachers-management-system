@@ -87,6 +87,21 @@
                             Sezioni
                         </a>
                     </li>
+
+                    <li>
+                        <a href="<?php echo e(route('classi')); ?>">
+                            <i class="fa fa-list" aria-hidden="true"></i>
+                            Classi
+                        </a>
+                    </li>
+
+
+                    <li>
+                        <a href="<?php echo e(route('orari')); ?>">
+                            <i class="fa fa-list" aria-hidden="true"></i>
+                            Orario
+                        </a>
+                    </li>
                 </ul>
             </div>
             <div class="menu_section">

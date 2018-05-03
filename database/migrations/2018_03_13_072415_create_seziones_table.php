@@ -16,7 +16,7 @@ class CreateSezionesTable extends Migration
         Schema::create('seziones', function (Blueprint $table) {
             $table->increments('id');
             $table->string('sigla');
-            $table->string('descrizione');
+            $table->string('descrizione')->nullable();
             $table->timestamps();
         });
     }
