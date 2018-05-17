@@ -88,7 +88,7 @@
                             <td class="text-center">
                                 <a href="<?php echo e(route('materie_classi_concorso', $docente->classi_concorso_id)); ?>">
                                     <button class="btn btn-warning">
-                                        <?php echo e($docente->classe_concorso()->first()->sigla); ?>
+                                        <?php echo e($docente->classi_concorso_id); ?>
 
                                     </button>
                                 </a>

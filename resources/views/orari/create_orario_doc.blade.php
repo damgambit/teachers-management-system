@@ -6,39 +6,107 @@
 
         <div class="col-lg-7">
 
-            <form action="{{route('create_orario_doc')}}" method="post">
               <fieldset>
      
-                <h2>Orario {{$docente->nome}}</h2>                 
-                    
+                <h2>Orario {{$docente->nome}}</h2> 
+
                     <table class="table table-bordered table-hover table-condensed table-striped">
+                        <thead>
+                            
+                            <th>Ora</th>
+                            <th>Lunedì</th>
+                            <th>Martedì</th>
+                            <th>Mercoledì</th>
+                            <th>Giovedì</th>
+                            <th>Venerdì</th>
+                                
+                        </thead>
 
-                <thead>
-                    <th>Ora</th>
-                    <th>Lunedì</th>
-                    <th>Martedì</th>
-                    <th>Mercoledì</th>
-                    <th>Giovedì</th>
+                        <tbody>
+                            
+                            @foreach([1,2,3,4,5,6,7] as $ora)
+                                <tr>
+                                    <td>{{$ora}}</td>
 
-                    <th>Venerdì</th>
-                </thead>
+                                    @foreach(['lun', 'mar', 'mer', 'gio', 'ven'] as $day)
+                                        <td>
+                                            @foreach($orarios as $orario)
+                                                @if($orario->giorno == $day && $orario->ora == $ora)
+                                                    classeeee
+                                                @endif
+                                            @endforeach
+                                        </td>
+                                    @endforeach
 
-                <tbody>
+                                </tr>
+                            @endforeach
 
-                    @foreach([1,2,3,4,5,6,7] as $ora)
-
-                        <tr>
-                            <td>{{$ora}}</td>
-                            <td> #ci devi mettere una select con tutte le classi e una select con tutte le materie in un form bravo ciao a dopo <34<3<3<3<3<3<3
-                        </tr>
-
-                    @endforeach
-
+                        </tbody>
+                    </table>            
                     
-                </tbody>
+                    @foreach(['lun', 'mar', 'mer', 'gio', 'ven'] as $giorno)
+                        <table class="table table-bordered table-hover table-condensed table-striped">
 
-            </table>
-                  
+                            <thead>
+                                <th>Ora</th>
+                                <th>{{$giorno}}</th>
+                                
+                            </thead>
+
+                            <tbody>
+
+                                @foreach([1,2,3,4,5,6,7] as $ora)
+
+                                    <tr>
+                                        <td>{{$ora}}</td>
+                                        <td>
+                                            <form action="{{route('create_orario_doc_add', [$giorno, $ora])}}" method="POST">
+
+                                                <input type="hidden" value="{{$docente->id}}" name="docente">
+
+                                                <select name="classe">
+
+                                                    
+                                                    @foreach($classes as $classe)
+
+                                                        <option value="{{$classe->id}}">
+                                                            {{$classe->anno}} {{$classe->sezione->sigla}} 
+                                                        </option>
+
+                                                    @endforeach
+
+                                                </select>
+
+                                                <select name="materia">
+
+                                                    @foreach($materias as $materia)
+
+                                                        <option value="{{$materia->id}}">
+                                                            {{$materia->nome}} 
+                                                        </option>
+
+                                                    @endforeach
+
+                                                </select>
+
+                                                <button type="submit" class="btn btn-success">
+                                                    +
+                                                </button>
+
+                                                {{csrf_field()}}
+
+                                            </form>
+                                        </td>
+                                    </tr>
+
+                                @endforeach
+
+                                
+                            </tbody>
+
+                        </table>
+                    @endforeach
+                          
 
 
 
@@ -54,13 +122,11 @@
                             </ul>
                         </div>
                     @endif
-                  <button type="submit" class="btn btn-primary">Orario</button>
 
                  </fieldset>
 
               
               
-            </form>
 
 
             

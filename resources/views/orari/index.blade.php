@@ -18,7 +18,7 @@
                     <select class="form-control" name="docente_id" required>
                         @foreach($docentes as $docente)
                             <option value="{{$docente->id}}">
-                                {{$docente->nome}} {{$docente->cognome}}
+                                {{$docente->cognome}} {{$docente->nome}} 
                             </option>
                         @endforeach
                     </select>

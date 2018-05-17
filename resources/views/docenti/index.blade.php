@@ -88,7 +88,7 @@
                             <td class="text-center">
                                 <a href="{{route('materie_classi_concorso', $docente->classi_concorso_id)}}">
                                     <button class="btn btn-warning">
-                                        {{$docente->classe_concorso()->first()->sigla}}
+                                        {{$docente->classi_concorso_id}}
                                     </button>
                                 </a>
                             </td>
