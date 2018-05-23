@@ -29,10 +29,16 @@
                                     <td>{{$ora}}</td>
 
                                     @foreach(['lun', 'mar', 'mer', 'gio', 'ven'] as $day)
-                                        <td>
+                                        <td class="text-center">
                                             @foreach($orarios as $orario)
                                                 @if($orario->giorno == $day && $orario->ora == $ora)
-                                                    classeeee
+                                                    
+                                                    <a href="{{route('delete_orario', [$orario->id, $docente->id])}}" 
+                                                        class="btn btn-danger text-center">
+                                                            {{$orario->classe()->first()->anno}} 
+                                                            {{$orario->classe()->first()->sezione()->first()->sigla}}
+                                                            <i class="fa fa-trash"></i>
+                                                    </a>
                                                 @endif
                                             @endforeach
                                         </td>

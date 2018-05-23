@@ -141,6 +141,8 @@ Route::get('classi/{classi_id}', 'ClasseController@show')->name('info_classi');
  */
 Route::get('orari', 'OrarioController@index')->name('orari');
 
+Route::get('delete_orario/{orario_id}/{docente_id}', 'OrarioController@delete')->name('delete_orario');
+
 Route::post('orari', 'OrarioController@create')->name('create_orari');
 Route::post('orario', 'OrarioController@create_orario_doc')->name('create_orario_doc');
 Route::post('create_orario_doc_add/{giorno}/{ora}', 'OrarioController@create_orario_doc_add')->name('create_orario_doc_add');

@@ -16,10 +16,13 @@ class ClasseController extends Controller
 
 	{
 
-		$sezionis = Sezione::all();
+		$sezionis = Sezione::orderBy('sigla')->get();
 
-		$classes = Classe::all();
-
+		$classes = Classe::join('seziones', 'classes.sezione_id', '=', 'seziones.id')
+						 ->select('classes.*', 'seziones.sigla')
+						 ->orderBy('anno')
+						 ->orderBy('seziones.sigla')
+						 ->get();
 
 		return view('classi.index', ['classes' => $classes, 'sezionis' => $sezionis]);
 

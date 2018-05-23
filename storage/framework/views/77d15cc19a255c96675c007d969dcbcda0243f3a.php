@@ -90,7 +90,7 @@
                     <?php $__currentLoopData = $classes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $classe): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <tr>
                             <td><?php echo e($classe->anno); ?></td>
-                            <td><?php echo e($classe->sezione()->first()->sigla); ?></td>
+                            <td><?php echo e($classe->sigla); ?></td>
                             <td><?php echo e($classe->aula); ?></td>
                             <td><?php echo e($classe->istituto); ?></td>
 

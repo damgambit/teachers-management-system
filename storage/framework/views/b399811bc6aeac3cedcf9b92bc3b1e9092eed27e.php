@@ -27,10 +27,17 @@
                                     <td><?php echo e($ora); ?></td>
 
                                     <?php $__currentLoopData = ['lun', 'mar', 'mer', 'gio', 'ven']; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $day): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                        <td>
+                                        <td class="text-center">
                                             <?php $__currentLoopData = $orarios; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $orario): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                                 <?php if($orario->giorno == $day && $orario->ora == $ora): ?>
-                                                    classeeee
+                                                    
+                                                    <a href="<?php echo e(route('delete_orario', [$orario->id, $docente->id])); ?>" 
+                                                        class="btn btn-danger text-center">
+                                                            <?php echo e($orario->classe()->first()->anno); ?> 
+                                                            <?php echo e($orario->classe()->first()->sezione()->first()->sigla); ?>
+
+                                                            <i class="fa fa-trash"></i>
+                                                    </a>
                                                 <?php endif; ?>
                                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                         </td>

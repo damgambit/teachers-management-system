@@ -90,7 +90,7 @@
                     @foreach($classes as $classe)
                         <tr>
                             <td>{{$classe->anno}}</td>
-                            <td>{{$classe->sezione()->first()->sigla}}</td>
+                            <td>{{$classe->sigla}}</td>
                             <td>{{$classe->aula}}</td>
                             <td>{{$classe->istituto}}</td>
 

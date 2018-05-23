@@ -30,5 +30,13 @@ class Orario extends Model
 
     }
 
+    public function classe()
+
+    {
+
+        return $this->belongsTo('App\Classe');
+
+    }
+
 }
 
