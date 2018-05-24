@@ -35,7 +35,11 @@ class OrarioController extends Controller
 		$docente_id = $request->docente_id;
 
 
-		$orarios = Orario::where('docente_id', $docente_id)->orderBy('giorno')->get();
+		$orarios = Orario::where('docente_id', $docente_id)
+							->join('classes', 'orarios.classe_id', '=', 'classes.id')
+							->join('seziones', 'classes.sezione_id', '=', 'seziones.id')
+							->select('orarios.*', 'classes.anno', 'classes.sezione_id', 'seziones.sigla')
+							->orderBy('giorno')->get();
 
 		$docente =  Docente::where('id', $docente_id)->get()[0];
 		$classes = Classe::with('sezione')->get();

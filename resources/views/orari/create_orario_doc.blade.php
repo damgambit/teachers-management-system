@@ -33,12 +33,33 @@
                                             @foreach($orarios as $orario)
                                                 @if($orario->giorno == $day && $orario->ora == $ora)
                                                     
-                                                    <a href="{{route('delete_orario', [$orario->id, $docente->id])}}" 
-                                                        class="btn btn-danger text-center">
-                                                            {{$orario->classe()->first()->anno}} 
-                                                            {{$orario->classe()->first()->sezione()->first()->sigla}}
-                                                            <i class="fa fa-trash"></i>
-                                                    </a>
+                                                    @if($orario->sigla == "DDD")
+
+                                                        <a href="{{route('delete_orario', [$orario->id, $docente->id])}}" 
+                                                            class="btn btn-info text-center">
+                                                                D
+                                                                <i class="fa fa-trash"></i>
+                                                        </a>
+
+                                                    @elseif($orario->sigla == "RRR") 
+
+                                                        <a href="{{route('delete_orario', [$orario->id, $docente->id])}}" 
+                                                            class="btn btn-warning text-center">
+                                                                R
+                                                                <i class="fa fa-trash"></i>
+                                                        </a>
+
+                                                    @else
+
+                                                        <a href="{{route('delete_orario', [$orario->id, $docente->id])}}" 
+                                                            class="btn btn-success text-center">
+                                                                {{$orario->anno}} 
+                                                                {{$orario->sigla}}
+                                                                <i class="fa fa-trash"></i>
+                                                        </a>
+
+                                                    @endif
+
                                                 @endif
                                             @endforeach
                                         </td>

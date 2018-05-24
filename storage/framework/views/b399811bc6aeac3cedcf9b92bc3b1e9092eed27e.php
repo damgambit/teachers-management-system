@@ -31,13 +31,34 @@
                                             <?php $__currentLoopData = $orarios; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $orario): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                                 <?php if($orario->giorno == $day && $orario->ora == $ora): ?>
                                                     
-                                                    <a href="<?php echo e(route('delete_orario', [$orario->id, $docente->id])); ?>" 
-                                                        class="btn btn-danger text-center">
-                                                            <?php echo e($orario->classe()->first()->anno); ?> 
-                                                            <?php echo e($orario->classe()->first()->sezione()->first()->sigla); ?>
+                                                    <?php if($orario->sigla == "DDD"): ?>
 
-                                                            <i class="fa fa-trash"></i>
-                                                    </a>
+                                                        <a href="<?php echo e(route('delete_orario', [$orario->id, $docente->id])); ?>" 
+                                                            class="btn btn-info text-center">
+                                                                D
+                                                                <i class="fa fa-trash"></i>
+                                                        </a>
+
+                                                    <?php elseif($orario->sigla == "RRR"): ?> 
+
+                                                        <a href="<?php echo e(route('delete_orario', [$orario->id, $docente->id])); ?>" 
+                                                            class="btn btn-warning text-center">
+                                                                R
+                                                                <i class="fa fa-trash"></i>
+                                                        </a>
+
+                                                    <?php else: ?>
+
+                                                        <a href="<?php echo e(route('delete_orario', [$orario->id, $docente->id])); ?>" 
+                                                            class="btn btn-success text-center">
+                                                                <?php echo e($orario->anno); ?> 
+                                                                <?php echo e($orario->sigla); ?>
+
+                                                                <i class="fa fa-trash"></i>
+                                                        </a>
+
+                                                    <?php endif; ?>
+
                                                 <?php endif; ?>
                                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                         </td>
