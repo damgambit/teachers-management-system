@@ -125,10 +125,12 @@ class OrarioController extends Controller
 		$materias = Materia::all();
 		
 
-		return redirect()->route('orari', [
-			'docente' => Docente::all(),
-			]);
-
+		return view('orari.create_orario_doc', [
+			'orarios' => $orarios, 
+			'docente' => $docente,
+			'classes' => $classes,
+			'materias' => $materias
+		]);
 
 	}
 
