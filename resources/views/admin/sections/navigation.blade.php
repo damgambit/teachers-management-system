@@ -46,49 +46,49 @@
                     
                     <li>
                         <a href="{{ route('materie') }}">
-                            <i class="fa fa-list" aria-hidden="true"></i>
+                            <i class="fa fa-archive" aria-hidden="true"></i>
                             Materie
                         </a>
                     </li>
 
                     <li>
                         <a href="{{ route('classi_concorso') }}">
-                            <i class="fa fa-list" aria-hidden="true"></i>
+                            <i class="fa fa-bars" aria-hidden="true"></i>
                             Classi Concorso
                         </a>
                     </li>
 
                     <li>
                         <a href="{{ route('docenti') }}">
-                            <i class="fa fa-list" aria-hidden="true"></i>
+                            <i class="fa fa-address-card" aria-hidden="true"></i>
                             Docenti
                         </a>
                     </li>
 
                     <li>
                         <a href="{{ route('motivi') }}">
-                            <i class="fa fa-list" aria-hidden="true"></i>
+                            <i class="fa fa-bug" aria-hidden="true"></i>
                             Motivi
                         </a>
                     </li>
 
                     <li>
                         <a href="{{ route('permessi') }}">
-                            <i class="fa fa-list" aria-hidden="true"></i>
+                            <i class="fa fa-cogs" aria-hidden="true"></i>
                             Permessi
                         </a>
                     </li>
 
                     <li>
                         <a href="{{ route('sezioni') }}">
-                            <i class="fa fa-list" aria-hidden="true"></i>
+                            <i class="fa fa-th" aria-hidden="true"></i>
                             Sezioni
                         </a>
                     </li>
 
                     <li>
                         <a href="{{ route('classi') }}">
-                            <i class="fa fa-list" aria-hidden="true"></i>
+                            <i class="fa fa-bell" aria-hidden="true"></i>
                             Classi
                         </a>
                     </li>
@@ -96,7 +96,7 @@
 
                     <li>
                         <a href="{{ route('orari') }}">
-                            <i class="fa fa-list" aria-hidden="true"></i>
+                            <i class="fa fa-calendar" aria-hidden="true"></i>
                             Orario
                         </a>
                     </li>
