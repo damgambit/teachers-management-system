@@ -4,7 +4,7 @@
     
     <div class="container">
 
-        <div class="col-lg-7">
+        <div class="col-lg-12">
 
             <form action="" method="post">
               <fieldset>
@@ -15,7 +15,7 @@
                     
             
                   
-                  <table class="table table-bordered table-hover table-condensed table-striped">
+                  <table class="table table-bordered table-hover table-condensed fixed table-striped">
                         <thead>
                             
                             <th>Classe</th>
@@ -28,6 +28,32 @@
                             <th>7</th>
                                 
                         </thead>
+
+                        <tbody >
+                          @foreach($results as $k => $v)
+                            <tr>
+                              <td width="5%">
+                                {{$k}}
+                              </td>
+                              @foreach([1,2,3,4,5,6,7] as $ora)
+                                @foreach($v as $elem)
+                                  @if($ora == $elem->ora)
+                                    <td width="13.5%">
+                                      <strong>Docente: </strong>{{$elem->cognome}} <br><br>
+                                      <strong>Motivo: </strong>{{$elem->motivo->descrizione}} <br><br>
+                                      <strong>Sostituzione: </strong>
+                                      <select>
+                                        
+                                      </select>
+                                    </td>
+                                  @else
+                                    <td width="13.5%"></td>
+                                  @endif
+                                @endforeach
+                              @endforeach
+                            </tr>
+                          @endforeach
+                        </tbody>
 
                   </table>  
 
@@ -45,7 +71,6 @@
                             </ul>
                         </div>
                     @endif
-                  <button type="submit" class="btn btn-primary">Vai</button>
 
                  </fieldset>
 

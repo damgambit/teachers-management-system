@@ -2,7 +2,7 @@
     
     <div class="container">
 
-        <div class="col-lg-7">
+        <div class="col-lg-12">
 
             <form action="" method="post">
               <fieldset>
@@ -13,7 +13,7 @@
                     
             
                   
-                  <table class="table table-bordered table-hover table-condensed table-striped">
+                  <table class="table table-bordered table-hover table-condensed fixed table-striped">
                         <thead>
                             
                             <th>Classe</th>
@@ -26,6 +26,35 @@
                             <th>7</th>
                                 
                         </thead>
+
+                        <tbody >
+                          <?php $__currentLoopData = $results; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $k => $v): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <tr>
+                              <td width="5%">
+                                <?php echo e($k); ?>
+
+                              </td>
+                              <?php $__currentLoopData = [1,2,3,4,5,6,7]; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $ora): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                <?php $__currentLoopData = $v; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $elem): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                  <?php if($ora == $elem->ora): ?>
+                                    <td width="13.5%">
+                                      <strong>Docente: </strong><?php echo e($elem->cognome); ?> <br><br>
+                                      <strong>Motivo: </strong><?php echo e($elem->motivo->descrizione); ?> <br><br>
+                                      <strong>Sostituzione: </strong>
+                                      <select>
+                                        <option>
+                                          Maria Giuseppa Manfreda
+                                        </option>
+                                      </select>
+                                    </td>
+                                  <?php else: ?>
+                                    <td width="13.5%"></td>
+                                  <?php endif; ?>
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                              <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                            </tr>
+                          <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                        </tbody>
 
                   </table>  
 
@@ -44,7 +73,6 @@
                             </ul>
                         </div>
                     <?php endif; ?>
-                  <button type="submit" class="btn btn-primary">Vai</button>
 
                  </fieldset>
 
