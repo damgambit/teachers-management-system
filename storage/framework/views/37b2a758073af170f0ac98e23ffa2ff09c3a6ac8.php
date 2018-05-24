@@ -45,7 +45,7 @@
                     <select class="form-control" name="docente_id" required>
                         <?php $__currentLoopData = $docentes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $docente): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                             <option value="<?php echo e($docente->id); ?>">
-                                <?php echo e($docente->nome); ?> <?php echo e($docente->cognome); ?>
+                                <?php echo e($docente->cognome); ?>
 
                             </option>
                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>

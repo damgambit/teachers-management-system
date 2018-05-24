@@ -137,7 +137,7 @@ Route::get('classi/{classi_id}', 'ClasseController@show')->name('info_classi');
 
 
 /*
- *  Routes delle classi
+ *  Routes dell'orario
  */
 Route::get('orari', 'OrarioController@index')->name('orari');
 
@@ -151,6 +151,9 @@ Route::get('orari/del/{orari_id}', 'OrarioController@delete')->name('delete_orar
 Route::get('orari/{orari_id}', 'OrarioController@show')->name('info_orari');
 
 
+
+Route::get('sostituzioni', 'SostituzioneController@index')->name('sostituzioni');
+Route::post('show_date_perm', 'SostituzioneController@show_date_perm')->name('show_date_perm');
 
 
 /**

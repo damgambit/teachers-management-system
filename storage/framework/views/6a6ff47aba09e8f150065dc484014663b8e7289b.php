@@ -102,6 +102,13 @@
                             Orario
                         </a>
                     </li>
+
+                    <li>
+                        <a href="<?php echo e(route('sostituzioni')); ?>">
+                            <i class="fa fa-exchange" aria-hidden="true"></i>
+                            Sostituzioni
+                        </a>
+                    </li>
                 </ul>
             </div>
             <div class="menu_section">

@@ -43,7 +43,6 @@ class PermessoController extends Controller
     		'data' => 'required',
     		'motivo_id' => 'required',
     		'docente_id' => 'required',
-    		'recupero' => 'required',
     	]);
 
     	$permesso = permesso::create([
@@ -52,7 +51,7 @@ class PermessoController extends Controller
     		'data' => $request->data,
     		'docente_id' => $request->docente_id,
     		'motivo_id' => $request->motivo_id,
-    		'recupero' => (int)($request->recupero === 'true')
+    		'recupero' => (int)($request->recupero === 'on')
     	]);
 
     	return redirect()->back()->withInput();

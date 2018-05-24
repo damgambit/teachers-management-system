@@ -100,6 +100,13 @@
                             Orario
                         </a>
                     </li>
+
+                    <li>
+                        <a href="{{ route('sostituzioni') }}">
+                            <i class="fa fa-exchange" aria-hidden="true"></i>
+                            Sostituzioni
+                        </a>
+                    </li>
                 </ul>
             </div>
             <div class="menu_section">
