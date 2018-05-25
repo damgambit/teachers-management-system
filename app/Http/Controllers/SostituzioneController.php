@@ -87,8 +87,8 @@ class SostituzioneController extends Controller
 													
 													->get();
 
-				$docentes->push($post);
-				$docentes->push($ant);
+				$docentes[$permesso->ora]->push($post);
+				$docentes[$permesso->ora]->push($ant);
 			}
 
 			
