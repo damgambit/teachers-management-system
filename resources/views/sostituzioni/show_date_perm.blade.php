@@ -44,10 +44,9 @@
                                       <strong>Sostituzione: </strong>
                                       <form action="{{route('add_sostituzione')}}" method="post">
                                         <select name="docente_id">
-                                          @foreach($docs as $doc_key => $doc_value)
-                                            @if($doc_key == $elem->anno.$elem->sigla)
-                                              ciao
-                                            @endif
+                                          @foreach($docs[$elem->anno.$elem->sigla][$ora] as $doc)
+                                            
+                                            <option>{{$doc}}</option>
                                             
                                           @endforeach
                                         </select>
