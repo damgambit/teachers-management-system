@@ -68,8 +68,8 @@ class SostituzioneController extends Controller
 			$docentes = [];				
 
 			foreach($permessos as $permesso) {
-				$docentes[$permesso->ora] = Orario::where('ora', $permesso->ora)
-													->where('giorno', $permesso->giorno)
+				$docentes[$permesso->ora] = Orario::where('orarios.ora', $permesso->ora)
+													->where('orarios.giorno', $permesso->giorno)
 													->join('docentes', 'orarios.docente_id', '=', 'docentes.id')
 													->join('classes', 'orarios.classe_id', '=', 'classes.id')
 													->join('seziones', 'classes.sezione_id', '=', 'seziones.id')
