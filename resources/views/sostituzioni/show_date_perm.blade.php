@@ -33,6 +33,7 @@
                           @foreach($results as $k => $v)
                             <tr>
                               <td width="5%">
+                                <br><br>
                                 {{$k}}
                               </td>
                               @foreach([1,2,3,4,5,6,7] as $ora)
