@@ -78,7 +78,8 @@ class SostituzioneController extends Controller
 													->where('sigla', 'DDD')
 													->where('permessos.giorno', $permesso->giorno)
 													->where('permessos.ora', $permesso->ora)
-
+													->orderBy('docentes.nome')
+													->distinct()
 													->get();
 			}
 
@@ -87,7 +88,6 @@ class SostituzioneController extends Controller
 			$docs[$classe->anno.$classe->sigla] = $docentes;
 		}
 
-		dd($docs);
 
 
 
