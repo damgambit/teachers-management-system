@@ -46,8 +46,8 @@
                                         <select name="docente_id">
                                           @foreach($docs[$elem->anno.$elem->sigla][$ora] as $doc)
                                             
-                                            <option value="{{$doc_value->docente_id}}">
-                                                {{$doc_value->cognome}} ({{$doc_value->descrizione}})
+                                            <option value="{{$doc->docente_id}}">
+                                                {{$doc->cognome}} ({{$doc->descrizione}})
                                             </option>
                                             
                                           @endforeach
