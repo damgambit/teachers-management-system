@@ -79,7 +79,7 @@ class SostituzioneController extends Controller
 													->where('permessos.giorno', $permesso->giorno)
 													->where('permessos.ora', $permesso->ora)
 													->orderBy('docentes.nome')
-													->distinct()
+													
 													->get();
 			}
 
