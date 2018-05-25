@@ -45,6 +45,7 @@
                                       <form action="{{route('add_sostituzione')}}" method="post">
                                         <select name="docente_id">
                                           @foreach($docs[$elem->anno.$elem->sigla] as $doc)
+                                            {{$doc}}
                                             <option value="{{$doc->docente_id}}">
                                               {{$doc->cognome}} ({{$doc->descrizione}})
                                             </option>
