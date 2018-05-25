@@ -83,7 +83,9 @@ class SostituzioneController extends Controller
 													->get();
 			}
 
-			
+			if(count($docentes) == 0) {
+				$docentes = ['docente_id' => 'entrata_anticipata', 'cognome' => 'Entrata Anticipata', 'descrizione' => ''];
+			}
 
 			$results[$classe->anno.$classe->sigla] = $permessos;
 			$docs[$classe->anno.$classe->sigla] = $docentes;
