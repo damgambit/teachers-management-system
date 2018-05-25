@@ -76,8 +76,9 @@ class SostituzioneController extends Controller
 													->join('permessos', 'permessos.docente_id', '!=', 'orarios.docente_id')
 													->where('anno', 1)
 													->where('sigla', 'DDD')
-													->where('orarios.giorno', $permesso->giorno)
-													->where('orarios.ora', $permesso->ora)
+													->where('permessos.giorno', $permesso->giorno)
+													->where('permessos.ora', $permesso->ora)
+
 													->get();
 			}
 
