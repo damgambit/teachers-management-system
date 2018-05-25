@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Collection;
+
 use App\Permesso;
 use App\Orario;
 use App\Docente;
@@ -83,7 +85,7 @@ class SostituzioneController extends Controller
 													->get();
 
 				if($docentes[$permesso->ora]->isEmpty()) {
-					$docentes[$permesso->ora] = ['docente_id' => 'entrata_anticipata', 'cognome' => 'Entrata Anticipata', 'descrizione' => ''];
+					$docentes[$permesso->ora] = Collection::make(['docente_id' => 'entrata_anticipata', 'cognome' => 'Entrata Anticipata', 'descrizione' => '']);
 				}
 			}
 
