@@ -83,7 +83,7 @@ class SostituzioneController extends Controller
 													->get();
 			}
 
-			if($docentes == []) {
+			if($docentes->isEmpty()) {
 				$docentes = ['docente_id' => 'entrata_anticipata', 'cognome' => 'Entrata Anticipata', 'descrizione' => ''];
 			}
 
@@ -91,7 +91,7 @@ class SostituzioneController extends Controller
 			$docs[$classe->anno.$classe->sigla] = $docentes;
 		}
 
-		dd($docs);
+		
 
 
 		return view('sostituzioni.show_date_perm', [
