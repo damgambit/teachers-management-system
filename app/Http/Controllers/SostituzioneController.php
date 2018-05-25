@@ -95,7 +95,7 @@ class SostituzioneController extends Controller
 			$docs[$classe->anno.$classe->sigla] = $docentes;
 		}
 
-
+		dd($docs);
 		return view('sostituzioni.show_date_perm', [
 			'date' => $date, 
 			'results' => $results,
