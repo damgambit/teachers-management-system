@@ -73,11 +73,7 @@ class SostituzioneController extends Controller
 													->join('docentes', 'orarios.docente_id', '=', 'docentes.id')
 													->join('classes', 'orarios.classe_id', '=', 'classes.id')
 													->join('seziones', 'classes.sezione_id', '=', 'seziones.id')
-													->join('permessos', function ($join) {
-														$join->on('permessos.ora', '!=', 'orarios.ora')
-														     ->on('permessos.giorno', '!=', 'orarios.giorno')
-														     ->on('permessos.docente_id', '!=', 'orarios.docente_id');
-														})
+													->join('permessos', 'permessos.docente_id', '!=', 'orarios.docente_id')
 													->where('anno', 1)
 													->where('sigla', 'DDD')
 													->get();
