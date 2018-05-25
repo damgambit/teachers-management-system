@@ -85,7 +85,10 @@ class SostituzioneController extends Controller
 													->get();
 
 				if($docentes[$permesso->ora]->isEmpty()) {
-					$docentes[$permesso->ora] = (object) ['docente_id' => 'entrata_anticipata', 'cognome' => 'Entrata Anticipata', 'descrizione' => ''];
+					$docentes[$permesso->ora] = Collection::make([
+											(object) ['docente_id' => 'entrata_posticipata', 'cognome' => 'Entrata Posticipata', 'descrizione' => ''], 
+											(object) ['docente_id' => 'uscit_anticipata', 'cognome' => 'Uscita Anticipata', 'descrizione' => '']
+										]);
 				}
 			}
 
@@ -95,7 +98,7 @@ class SostituzioneController extends Controller
 			$docs[$classe->anno.$classe->sigla] = $docentes;
 		}
 
-		dd($docs);
+		// dd($docs);
 		return view('sostituzioni.show_date_perm', [
 			'date' => $date, 
 			'results' => $results,
