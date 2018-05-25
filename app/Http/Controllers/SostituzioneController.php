@@ -90,7 +90,7 @@ class SostituzioneController extends Controller
 		}
 
 
-		dd($docs);
+		dd($docs['2A']);
 
 		return view('sostituzioni.show_date_perm', [
 			'date' => $date, 
