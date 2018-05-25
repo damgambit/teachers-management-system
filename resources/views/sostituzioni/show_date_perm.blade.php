@@ -41,7 +41,7 @@
                                   @if($ora == $elem->ora)
                                     <td width="13.5%">
                                       <strong>Docente: </strong>{{$elem->cognome}} <br><br>
-                                      <strong>Motivo: </strong>{{$elem->motivo->descrizione}} <br><br>
+                                      <strong>Motivo: </strong>{{$elem->motivo->descrizione}} <br>
                                       <strong>Sostituzione: </strong>
                                       <form action="{{route('add_sostituzione')}}" method="post">
                                         <select name="docente_id">
