@@ -81,11 +81,13 @@ class SostituzioneController extends Controller
 													->orderBy('docentes.nome')
 													
 													->get();
+
+				if($docentes[$permesso->ora]->isEmpty()) {
+					$docentes = ['docente_id' => 'entrata_anticipata', 'cognome' => 'Entrata Anticipata', 'descrizione' => ''];
+				}
 			}
 
-			if($docentes->isEmpty()) {
-				$docentes = ['docente_id' => 'entrata_anticipata', 'cognome' => 'Entrata Anticipata', 'descrizione' => ''];
-			}
+			
 
 			$results[$classe->anno.$classe->sigla] = $permessos;
 			$docs[$classe->anno.$classe->sigla] = $docentes;
