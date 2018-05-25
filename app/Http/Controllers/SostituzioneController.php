@@ -85,7 +85,7 @@ class SostituzioneController extends Controller
 													->get();
 
 				if($docentes[$permesso->ora]->isEmpty()) {
-					$docentes[$permesso->ora] = Collection::make(['docente_id' => 'entrata_anticipata', 'cognome' => 'Entrata Anticipata', 'descrizione' => '']);
+					$docentes[$permesso->ora] = (object) ['docente_id' => 'entrata_anticipata', 'cognome' => 'Entrata Anticipata', 'descrizione' => ''];
 				}
 			}
 
