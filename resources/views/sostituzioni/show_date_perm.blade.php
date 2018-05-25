@@ -45,7 +45,7 @@
                                       <form action="{{route('add_sostituzione')}}" method="post">
                                         <select name="docente_id">
                                           @foreach($docs[$elem->anno.$elem->sigla] as $doc)
-                                            {{$docs[$elem->anno.$elem->sigla]}}
+                                            {{$docs}}
                                             
                                           @endforeach
                                         </select>
