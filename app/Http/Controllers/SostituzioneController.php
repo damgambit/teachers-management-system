@@ -50,6 +50,9 @@ class SostituzioneController extends Controller
 		$results = [];
 		$docs = [];
 
+		$post = (object) ['docente_id' => 'entrata_posticipata', 'cognome' => 'Entrata Posticipata', 'descrizione' => ''];
+		$ant = (object) ['docente_id' => 'uscita_anticipata', 'cognome' => 'Uscita Anticipata', 'descrizione' => ''];
+
 		foreach($classes as $classe) {
 
 			$permessos = Permesso::join('orarios', function ($join) {
@@ -84,12 +87,8 @@ class SostituzioneController extends Controller
 													
 													->get();
 
-				if($docentes[$permesso->ora]->isEmpty()) {
-					$docentes[$permesso->ora] = Collection::make([
-											(object) ['docente_id' => 'entrata_posticipata', 'cognome' => 'Entrata Posticipata', 'descrizione' => ''], 
-											(object) ['docente_id' => 'uscit_anticipata', 'cognome' => 'Uscita Anticipata', 'descrizione' => '']
-										]);
-				}
+				$docentes->push($post);
+				$docentes->push($ant);
 			}
 
 			
