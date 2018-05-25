@@ -83,6 +83,7 @@ class SostituzioneController extends Controller
 													->get();
 			}
 
+			dd($docs);
 
 			$results[$classe->anno.$classe->sigla] = $permessos;
 			$docs[$classe->anno.$classe->sigla] = $docentes;
