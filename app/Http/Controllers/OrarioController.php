@@ -19,7 +19,9 @@ class OrarioController extends Controller
 
 	{
 
-		$docentes = Docente::orderBy('cognome')->get();
+		$docentes = Docente::orderBy('cognome')
+							->where('id', '<', 200)
+							->get();
 
 
 		return view('orari.index', ['docentes' => $docentes]);

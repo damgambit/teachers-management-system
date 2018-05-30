@@ -15,7 +15,9 @@ class DocenteController extends Controller
 
     {
 
-    	$docentes = Docente::orderBy('cognome')->get();
+    	$docentes = Docente::orderBy('cognome')
+                            ->where('id', '<', 200)
+                            ->get();
     	$ccs = ClassiConcorso::all();
 
     	return view('docenti.index', [

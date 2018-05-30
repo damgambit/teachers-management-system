@@ -40,14 +40,23 @@
                                   @if($ora == $elem->ora)
                                     <td width="13.5%">
                                       <strong>Docente: </strong>{{$elem->cognome}} <br>
-                                      <strong>Motivo: </strong>{{$elem->motivo->descrizione}} <br><br>
+                                      <strong>Motivo: </strong>{{$elem->descrizione}} <br><br>
+
+                                      @foreach($sostituziones as $sostituzione)
+
+                                        @if($sostituzione->orario_id == $elem->orario_id)
+                                          <strong>Sostituto: </strong>{{$sostituzione->cognome}}
+                                        @endif
+                                      @endforeach
+
+
                                       <strong>Sostituzione: </strong>
                                       <form action="{{route('add_sostituzione')}}" method="post">
                                         {{csrf_field()}}
                                         <select name="docente_id">
                                           @foreach($docs[$elem->anno.$elem->sigla][$ora] as $doc)
                                             
-                                            <option value="{{$doc->docente_id}}">
+                                            <option value="{{$doc->docente_id_sos}}">
                                                 {{$doc->cognome}} ({{$doc->descrizione}})
                                             </option>
                                             
@@ -56,7 +65,7 @@
 
                                         <input type="hidden"  value="{{$date}}" name="date" />
 
-                                        <input tyep="hidden" value="{{$elem->id}}" name="orario_id" />
+                                        <input type="hidden" value="{{$elem->orario_id}}" name="orario_id" />
 
                                         <button type="submit" class="btn btn-info">
                                           Crea Sostituzione

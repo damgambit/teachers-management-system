@@ -39,7 +39,17 @@
                                   <?php if($ora == $elem->ora): ?>
                                     <td width="13.5%">
                                       <strong>Docente: </strong><?php echo e($elem->cognome); ?> <br>
-                                      <strong>Motivo: </strong><?php echo e($elem->motivo->descrizione); ?> <br><br>
+                                      <strong>Motivo: </strong><?php echo e($elem->descrizione); ?> <br><br>
+
+                                      <?php $__currentLoopData = $sostituziones; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $sostituzione): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+
+                                        <?php if($sostituzione->orario_id == $elem->orario_id): ?>
+                                          <strong>Sostituto: </strong><?php echo e($sostituzione->cognome); ?>
+
+                                        <?php endif; ?>
+                                      <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+
+
                                       <strong>Sostituzione: </strong>
                                       <form action="<?php echo e(route('add_sostituzione')); ?>" method="post">
                                         <?php echo e(csrf_field()); ?>
@@ -47,12 +57,16 @@
                                         <select name="docente_id">
                                           <?php $__currentLoopData = $docs[$elem->anno.$elem->sigla][$ora]; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $doc): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                             
-                                            <option value="<?php echo e($doc->docente_id); ?>">
+                                            <option value="<?php echo e($doc->docente_id_sos); ?>">
                                                 <?php echo e($doc->cognome); ?> (<?php echo e($doc->descrizione); ?>)
                                             </option>
                                             
                                           <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                         </select>
+
+                                        <input type="hidden"  value="<?php echo e($date); ?>" name="date" />
+
+                                        <input type="hidden" value="<?php echo e($elem->orario_id); ?>" name="orario_id" />
 
                                         <button type="submit" class="btn btn-info">
                                           Crea Sostituzione

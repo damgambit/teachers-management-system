@@ -28,6 +28,8 @@ class UsersRolesSeeder extends Seeder
             'patrizio@admin.com' => ['administrator', 'authenticated'],
             'oleeeh@admin.com' => ['administrator', 'authenticated'],
             'lucrezia@admin.com' => ['administrator', 'authenticated'],
+            'damiano@admin.com' => ['administrator', 'authenticated'],
+            'alessio@admin.com' => ['administrator', 'authenticated'],
             'demo.laravel@labs64.com' => 'authenticated',
         ];
 

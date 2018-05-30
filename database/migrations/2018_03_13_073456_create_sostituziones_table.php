@@ -30,6 +30,8 @@ class CreateSostituzionesTable extends Migration
                 ->on('docentes')
                 ->onDelete('cascade');
 
+            $table->date('date');
+
             $table->timestamps();
         });
     }
