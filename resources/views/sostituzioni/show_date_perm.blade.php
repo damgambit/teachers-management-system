@@ -6,7 +6,6 @@
 
         <div class="col-lg-12">
 
-            <form action="" method="post">
               <fieldset>
      
                 <h2>Sostituzioni</h2> 
@@ -44,6 +43,7 @@
                                       <strong>Motivo: </strong>{{$elem->motivo->descrizione}} <br><br>
                                       <strong>Sostituzione: </strong>
                                       <form action="{{route('add_sostituzione')}}" method="post">
+                                        {{csrf_field()}}
                                         <select name="docente_id">
                                           @foreach($docs[$elem->anno.$elem->sigla][$ora] as $doc)
                                             
@@ -53,6 +53,10 @@
                                             
                                           @endforeach
                                         </select>
+
+                                        <input type="hidden"  value="{{$date}}" name="date" />
+
+                                        <input tyep="hidden" value="{{$elem->id}}" name="orario_id" />
 
                                         <button type="submit" class="btn btn-info">
                                           Crea Sostituzione
@@ -89,7 +93,6 @@
 
               
               
-            </form>
 
 
             

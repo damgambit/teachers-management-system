@@ -154,6 +154,7 @@ Route::get('orari/{orari_id}', 'OrarioController@show')->name('info_orari');
 
 Route::get('sostituzioni', 'SostituzioneController@index')->name('sostituzioni');
 Route::post('show_date_perm', 'SostituzioneController@show_date_perm')->name('show_date_perm');
+
 Route::post('add_sostituzione', 'SostituzioneController@add_sostituzione')->name('add_sostituzione');
 
 /**

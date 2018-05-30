@@ -107,4 +107,13 @@ class SostituzioneController extends Controller
 	}
 
 
+	public function add_sostituzione(Request $request)
+
+	{
+
+		dd($request);
+
+	}
+
+
 }

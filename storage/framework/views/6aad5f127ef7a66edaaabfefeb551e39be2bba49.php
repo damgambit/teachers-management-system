@@ -4,7 +4,6 @@
 
         <div class="col-lg-12">
 
-            <form action="" method="post">
               <fieldset>
      
                 <h2>Sostituzioni</h2> 
@@ -43,6 +42,8 @@
                                       <strong>Motivo: </strong><?php echo e($elem->motivo->descrizione); ?> <br><br>
                                       <strong>Sostituzione: </strong>
                                       <form action="<?php echo e(route('add_sostituzione')); ?>" method="post">
+                                        <?php echo e(csrf_field()); ?>
+
                                         <select name="docente_id">
                                           <?php $__currentLoopData = $docs[$elem->anno.$elem->sigla][$ora]; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $doc): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                             
@@ -89,7 +90,6 @@
 
               
               
-            </form>
 
 
             
