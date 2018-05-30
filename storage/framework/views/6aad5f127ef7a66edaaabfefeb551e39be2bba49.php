@@ -31,6 +31,7 @@
                           <?php $__currentLoopData = $results; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $k => $v): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                             <tr>
                               <td width="5%">
+                                <br><br><br>
                                 <?php echo e($k); ?>
 
                               </td>
@@ -38,14 +39,24 @@
                                 <?php $__currentLoopData = $v; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $elem): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                   <?php if($ora == $elem->ora): ?>
                                     <td width="13.5%">
-                                      <strong>Docente: </strong><?php echo e($elem->cognome); ?> <br><br>
+                                      <strong>Docente: </strong><?php echo e($elem->cognome); ?> <br>
                                       <strong>Motivo: </strong><?php echo e($elem->motivo->descrizione); ?> <br><br>
                                       <strong>Sostituzione: </strong>
-                                      <select>
-                                        <option>
-                                          Maria Giuseppa Manfreda
-                                        </option>
-                                      </select>
+                                      <form action="<?php echo e(route('add_sostituzione')); ?>" method="post">
+                                        <select name="docente_id">
+                                          <?php $__currentLoopData = $docs[$elem->anno.$elem->sigla][$ora]; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $doc): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                            
+                                            <option value="<?php echo e($doc->docente_id); ?>">
+                                                <?php echo e($doc->cognome); ?> (<?php echo e($doc->descrizione); ?>)
+                                            </option>
+                                            
+                                          <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                        </select>
+
+                                        <button type="submit" class="btn btn-info">
+                                          Crea Sostituzione
+                                        </button>
+                                      </form>
                                     </td>
                                   <?php else: ?>
                                     <td width="13.5%"></td>

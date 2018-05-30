@@ -33,6 +33,16 @@ class UsersSeeder extends Seeder
                 'updated_at' => Carbon::now(),
             ],
             [
+                'name' => 'Lucrezia',
+                'email' => 'lucrezia@admin.com',
+                'password' => bcrypt('admin'),
+                'active' => true,
+                'confirmation_code' => \Ramsey\Uuid\Uuid::uuid4(),
+                'confirmed' => true,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],
+            [
                 'name' => 'admin',
                 'email' => 'admin@admin.com',
                 'password' => bcrypt('admin'),
