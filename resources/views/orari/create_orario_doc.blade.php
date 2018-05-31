@@ -89,7 +89,7 @@
                                         <td>
                                             <form action="{{route('create_orario_doc_add', [$giorno, $ora])}}" method="POST">
 
-                                                <input type="hidden" value="{{$docente->id}}" name="docente">
+                                                <input type="hidden" value="{{$docente->id}}" name="docente_id">
 
                                                 <select name="classe">
 

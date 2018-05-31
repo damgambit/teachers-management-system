@@ -9,6 +9,9 @@ use App\Permesso;
 use App\Motivo;
 use App\Docente;
 
+
+use App\Models\Permesso\PermessoHelper;
+
 class PermessoController extends Controller
 
 {
@@ -17,16 +20,7 @@ class PermessoController extends Controller
 
 	{
 
-		$motivos = Motivo::all();
-		$docentes = Docente::all();
-		$permessos = Permesso::all();
-
-
-		return view('permessi.index', [
-				'motivos' => $motivos,
-				'docentes' => $docentes,
-				'permessos' => $permessos
-			]);
+		return view('permessi.index', PermessoHelper::index_data());
 
 	}
 
@@ -37,22 +31,7 @@ class PermessoController extends Controller
 	{
 
 
-		$request->validate([
-    		'giorno' => 'required',
-    		'ora' => 'required',
-    		'data' => 'required',
-    		'motivo_id' => 'required',
-    		'docente_id' => 'required',
-    	]);
-
-    	$permesso = permesso::create([
-    		'giorno' => $request->giorno,
-    		'ora' => $request->ora,
-    		'data' => $request->data,
-    		'docente_id' => $request->docente_id,
-    		'motivo_id' => $request->motivo_id,
-    		'recupero' => (int)($request->recupero === 'on')
-    	]);
+    	$permesso = Permesso::create(PermessoController::handle_create($request));
 
     	return redirect()->back()->withInput();
 
@@ -65,6 +44,19 @@ class PermessoController extends Controller
 	{
 
 		Permesso::find($permessi_id)->delete();
+
+		return redirect()->back()->withInput();
+
+	}
+
+
+	public function update_recupero($permessi_id, Request $request)
+
+	{
+
+		$permesso = Permesso::find($permessi_id);
+		$permesso->recupero = $request->recupero; $permesso->save();
+		
 
 		return redirect()->back()->withInput();
 

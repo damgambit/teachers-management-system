@@ -7,23 +7,22 @@ use Illuminate\Http\Request;
 use App\Docente;
 use App\ClassiConcorso;
 
+use App\Models\Docente\DocenteHelper;
+
 class DocenteController extends Controller
 {
+
+    use DocenteHelper;
+
     
 
     public function index()
 
     {
 
-    	$docentes = Docente::orderBy('cognome')
-                            ->where('id', '<', 200)
-                            ->get();
-    	$ccs = ClassiConcorso::all();
-
-    	return view('docenti.index', [
-    		'docentes' => $docentes,
-    		'ccs' => $ccs
-    	]);
+        // index_data: Returns all the data that the view 'docenti.index'
+        // needs - every docente and the classi_concorsos as ccs
+    	return view('docenti.index', DocenteHelper::index_data());
 
     }
 
@@ -33,25 +32,17 @@ class DocenteController extends Controller
 
     {
 
-
-    	$request->validate([
-    		'nome' => 'required',
-    		'cognome' => 'required',
-    		'cc' => 'required'
-    	]);
-
-    	$docente = Docente::create([
-    		'nome' => $request->nome,
-    		'cognome' => $request->cognome,
-    		'email' => $request->email,
-    		'cellulare' => $request->cellulare,
-    		'classi_concorso_id' => $request->cc
-    	]);
+        // handle_create: it needs the request because this fuction validate 
+        // the data and return the array to create the Docente
+    	$docente = Docente::create(DocenteHelper::handle_create($request));
 
 
     	return redirect()->back()->withInput();
 
     }
+
+
+    // TODO: Aggiungere Delete function
 
 
 }

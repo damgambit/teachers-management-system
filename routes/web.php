@@ -116,6 +116,7 @@ Route::get('permessi', 'PermessoController@index')->name('permessi');
 Route::post('permessi', 'PermessoController@create')->name('create_permessi');
 Route::get('permessi/del/{permessi_id}', 'PermessoController@delete')->name('delete_permessi');
 Route::get('permessi/{permessi_id}', 'PermessoController@show')->name('info_permessi');
+Route::post('permessi/update_recupero/{permessi_id}', 'PermessoController@update_recupero')->name('update_recupero');
 
 
 /*
@@ -143,8 +144,8 @@ Route::get('orari', 'OrarioController@index')->name('orari');
 
 Route::get('delete_orario/{orario_id}/{docente_id}', 'OrarioController@delete')->name('delete_orario');
 
-Route::post('orari', 'OrarioController@create')->name('create_orari');
-Route::post('orario', 'OrarioController@create_orario_doc')->name('create_orario_doc');
+Route::get('create_orario', 'OrarioController@create')->name('create_orari');
+Route::get('orario', 'OrarioController@create_orario_doc')->name('create_orario_doc');
 Route::post('create_orario_doc_add/{giorno}/{ora}', 'OrarioController@create_orario_doc_add')->name('create_orario_doc_add');
 
 Route::get('orari/del/{orari_id}', 'OrarioController@delete')->name('delete_orari');
@@ -153,7 +154,7 @@ Route::get('orari/{orari_id}', 'OrarioController@show')->name('info_orari');
 
 
 Route::get('sostituzioni', 'SostituzioneController@index')->name('sostituzioni');
-Route::post('show_date_perm', 'SostituzioneController@show_date_perm')->name('show_date_perm');
+Route::get('show_date_perm', 'SostituzioneController@show_date_perm')->name('show_date_perm');
 
 Route::post('add_sostituzione', 'SostituzioneController@add_sostituzione')->name('add_sostituzione');
 

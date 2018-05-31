@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Models\Classe\ClasseHelper;
 
 use App\Classe;
-use App\Sezione;
 
 class ClasseController extends Controller
 {
@@ -16,36 +16,16 @@ class ClasseController extends Controller
 
 	{
 
-		$sezionis = Sezione::orderBy('sigla')->get();
-
-		$classes = Classe::join('seziones', 'classes.sezione_id', '=', 'seziones.id')
-						 ->select('classes.*', 'seziones.sigla')
-						 ->orderBy('anno')
-						 ->orderBy('seziones.sigla')
-						 ->get();
-
-		return view('classi.index', ['classes' => $classes, 'sezionis' => $sezionis]);
+		return view('classi.index', ClasseHelper::index_data());
 
 	}
 
 
 	public function create(Request $request)
 
-	{
+	{		
 
-		$request->validate([
-    		'anno' => 'required',
-    		'istituto' => 'required',
-    		'sezione_id' => 'required',
-    		'aula' => 'required',
-    	]);
-
-    	$classe = Classe::create([
-    		'anno' => $request->anno,
-    		'istituto' => $request->istituto,
-    		'sezione_id' => $request->sezione_id,
-    		'aula' => $request->aula
-    	]);
+    	$classe = Classe::create(ClasseHelper::handle_create$($request));
 
     	return redirect()->back()->withInput();
 
@@ -56,13 +36,9 @@ class ClasseController extends Controller
 
 	{
 
-		
 		Classe::find($classi_id)->delete();
 
-
-
 		return redirect()->back()->withInput();
-
 
 	}
 

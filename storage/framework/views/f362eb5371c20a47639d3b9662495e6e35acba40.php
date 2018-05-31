@@ -1,12 +1,10 @@
-@extends('admin.layouts.admin')
-
-@section('content')
+<?php $__env->startSection('content'); ?>
     
     <div class="container">
 
         <div class="col-lg-7">
 
-            <form action="{{route('create_docenti')}}" method="post">
+            <form action="<?php echo e(route('create_docenti')); ?>" method="post">
               <fieldset>
      
                 <h2>Nuovo Docente</h2>                 
@@ -34,26 +32,28 @@
                   <div class="form-group">
                     <label for="cc">Classe Concorso</label>
                     <select class="form-control" name="cc">
-                        @foreach($ccs as $cc)
-                            <option value="{{$cc->id}}">
-                                {{$cc->sigla}}
+                        <?php $__currentLoopData = $ccs; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $cc): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <option value="<?php echo e($cc->id); ?>">
+                                <?php echo e($cc->sigla); ?>
+
                             </option>
-                        @endforeach
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     </select>
                   </div>  
 
 
-                  {{csrf_field()}}
+                  <?php echo e(csrf_field()); ?>
 
-                    @if ($errors->any())
+
+                    <?php if($errors->any()): ?>
                         <div class="alert alert-danger">
                             <ul>
-                                @foreach ($errors->all() as $error)
-                                    <li>{{ $error }}</li>
-                                @endforeach
+                                <?php $__currentLoopData = $errors->all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $error): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                    <li><?php echo e($error); ?></li>
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                             </ul>
                         </div>
-                    @endif
+                    <?php endif; ?>
                   <button type="submit" class="btn btn-primary">Aggiungi</button>
 
                  </fieldset>
@@ -77,31 +77,32 @@
                 </thead>
 
                 <tbody>
-                    @foreach($docentes as $docente)
+                    <?php $__currentLoopData = $docentes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $docente): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <tr>
-                            <td>{{$docente->nome}}</td>
-                            <td>{{$docente->cognome}}</td>
-                            <td>{{$docente->email}}</td>
-                            <td>{{$docente->cellulare}}</td>
+                            <td><?php echo e($docente->nome); ?></td>
+                            <td><?php echo e($docente->cognome); ?></td>
+                            <td><?php echo e($docente->email); ?></td>
+                            <td><?php echo e($docente->cellulare); ?></td>
 
                             <td class="text-center">
-                                <a href="{{route('materie_classi_concorso', $docente->classi_concorso_id)}}">
+                                <a href="<?php echo e(route('materie_classi_concorso', $docente->classi_concorso_id)); ?>">
                                     <button class="btn btn-info">
-                                        {{$docente->classe_concorso}}
+                                        <?php echo e($docente->classe_concorso); ?>
+
                                     </button>
                                 </a>
                             </td>
                             
 
                             <td class="text-center">
-                                <a href="{{route('delete_docenti', $docente->id)}}">
+                                <a href="<?php echo e(route('delete_docenti', $docente->id)); ?>">
                                     <button class="btn btn-danger">
                                         <i class="fa fa-trash"></i>
                                     </button>
                                 </a>
                             </td>
                         </tr>
-                    @endforeach
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </tbody>
 
             </table>
@@ -110,14 +111,18 @@
 
     </div>
     
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('scripts')
-    @parent
-    {{ Html::script(mix('assets/admin/js/dashboard.js')) }}
-@endsection
+<?php $__env->startSection('scripts'); ?>
+    ##parent-placeholder-16728d18790deb58b3b8c1df74f06e536b532695##
+    <?php echo e(Html::script(mix('assets/admin/js/dashboard.js'))); ?>
 
-@section('styles')
-    @parent
-    {{ Html::style(mix('assets/admin/css/dashboard.css')) }}
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('styles'); ?>
+    ##parent-placeholder-bf62280f159b1468fff0c96540f3989d41279669##
+    <?php echo e(Html::style(mix('assets/admin/css/dashboard.css'))); ?>
+
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('admin.layouts.admin', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

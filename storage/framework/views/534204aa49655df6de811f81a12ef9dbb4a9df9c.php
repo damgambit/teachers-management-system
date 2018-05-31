@@ -1,12 +1,10 @@
-@extends('admin.layouts.admin')
-
-@section('content')
+<?php $__env->startSection('content'); ?>
     
     <div class="container">
 
         <div class="col-lg-7">
 
-            <form action="{{route('create_permessi')}}" method="post">
+            <form action="<?php echo e(route('create_permessi')); ?>" method="post">
               <fieldset>
      
                 <h2>Nuovo Permesso</h2>                 
@@ -45,22 +43,24 @@
                   <div class="form-group">
                     <label for="docente_id">Docente</label>
                     <select class="form-control" name="docente_id" required>
-                        @foreach($docentes as $docente)
-                            <option value="{{$docente->id}}">
-                                {{$docente->cognome}}
+                        <?php $__currentLoopData = $docentes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $docente): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <option value="<?php echo e($docente->id); ?>">
+                                <?php echo e($docente->cognome); ?>
+
                             </option>
-                        @endforeach
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     </select>
                   </div>  
 
                   <div class="form-group">
                     <label for="motivo_id">Motivo</label>
                     <select class="form-control" name="motivo_id" required>
-                        @foreach($motivos as $motivo)
-                            <option value="{{$motivo->id}}">
-                                {{$motivo->descrizione}}
+                        <?php $__currentLoopData = $motivos; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $motivo): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <option value="<?php echo e($motivo->id); ?>">
+                                <?php echo e($motivo->descrizione); ?>
+
                             </option>
-                        @endforeach
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     </select>
                   </div>  
 
@@ -72,17 +72,18 @@
 
 
 
-                  {{csrf_field()}}
+                  <?php echo e(csrf_field()); ?>
 
-                    @if ($errors->any())
+
+                    <?php if($errors->any()): ?>
                         <div class="alert alert-danger">
                             <ul>
-                                @foreach ($errors->all() as $error)
-                                    <li>{{ $error }}</li>
-                                @endforeach
+                                <?php $__currentLoopData = $errors->all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $error): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                    <li><?php echo e($error); ?></li>
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                             </ul>
                         </div>
-                    @endif
+                    <?php endif; ?>
                   <button type="submit" class="btn btn-primary">Aggiungi</button>
 
                  </fieldset>
@@ -107,42 +108,43 @@
                 </thead>
 
                 <tbody>
-                    @foreach($permessos as $permesso)
+                    <?php $__currentLoopData = $permessos; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $permesso): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <tr>
-                            <td>{{$permesso->giorno}}</td>
-                            <td>{{$permesso->ora}}</td>
-                            <td>{{$permesso->data}}</td>
-                            <td>{{$permesso->nome}}</td>
-                            <td>{{$permesso->descrizione}}</td>
-                            @if($permesso->recupero === 1)
+                            <td><?php echo e($permesso->giorno); ?></td>
+                            <td><?php echo e($permesso->ora); ?></td>
+                            <td><?php echo e($permesso->data); ?></td>
+                            <td><?php echo e($permesso->nome); ?></td>
+                            <td><?php echo e($permesso->descrizione); ?></td>
+                            <?php if($permesso->recupero === 1): ?>
                                 <td>
                                     
-                                    <form method="post" action="{{route('update_recupero', $permesso->id)}}">
+                                    <form method="post" action="<?php echo e(route('update_recupero', $permesso->id)); ?>">
                                         <input type='hidden' value='0' name='recupero'>
                                         Recupero Necessario
                                         <button type="submit" class="btn btn-success">Conferma Recupero</button>
 
-                                        {{csrf_field()}}
+                                        <?php echo e(csrf_field()); ?>
+
                                     </form>
                                 </td>
 
 
-                            @else
+                            <?php else: ?>
                                 <td>Recupero Non Necessario o Recuperato</td>
-                            @endif
+                            <?php endif; ?>
 
                             
                         
 
                             <td class="text-center">
-                                <a href="{{route('delete_permessi', $permesso->id)}}">
+                                <a href="<?php echo e(route('delete_permessi', $permesso->id)); ?>">
                                     <button class="btn btn-danger">
                                         <i class="fa fa-trash"></i>
                                     </button>
                                 </a>
                             </td>
                         </tr>
-                    @endforeach
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </tbody>
 
             </table>
@@ -151,14 +153,18 @@
 
     </div>
     
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('scripts')
-    @parent
-    {{ Html::script(mix('assets/admin/js/dashboard.js')) }}
-@endsection
+<?php $__env->startSection('scripts'); ?>
+    ##parent-placeholder-16728d18790deb58b3b8c1df74f06e536b532695##
+    <?php echo e(Html::script(mix('assets/admin/js/dashboard.js'))); ?>
 
-@section('styles')
-    @parent
-    {{ Html::style(mix('assets/admin/css/dashboard.css')) }}
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('styles'); ?>
+    ##parent-placeholder-bf62280f159b1468fff0c96540f3989d41279669##
+    <?php echo e(Html::style(mix('assets/admin/css/dashboard.css'))); ?>
+
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('admin.layouts.admin', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

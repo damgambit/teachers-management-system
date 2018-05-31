@@ -6,7 +6,7 @@
 
         <div class="col-lg-7">
 
-            <form action="{{route('create_orario_doc')}}" method="post">
+            <form action="{{route('create_orario_doc')}}" method="get">
               <fieldset>
      
                 <h2>Orario Docente</h2>                 

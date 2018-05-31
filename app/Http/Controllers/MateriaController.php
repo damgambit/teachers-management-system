@@ -57,7 +57,8 @@ class MateriaController extends Controller
 
 	{
 
-
+		// TODO: Maybe... Think about a view with recaps on the select materia
+		//		 such as Docentes and Orarios
 		
 	}
 

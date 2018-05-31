@@ -6,7 +6,7 @@
 
         <div class="col-lg-7">
 
-            <form action="{{route("show_date_perm")}}" method="post">
+            <form action="{{route("show_date_perm")}}" method="get">
               <fieldset>
      
                 <h2>Sostituzioni</h2>                 

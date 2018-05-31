@@ -43,7 +43,6 @@
                 <thead>
 
                     <th>Descrizione</th>
-                    <th>Info</th>
                     <th>Elimina</th>
                     
                 </thead>
@@ -56,13 +55,6 @@
                             <td>{{$motivo->descrizione}}</td>
 
                             
-                            <td class="text-center">
-                                <a href="{{route('info_motivi', $motivo->id)}}">
-                                    <button class="btn btn-info">
-                                        <i class="fa fa-info"></i>
-                                    </button>
-                                </a>
-                            </td>
 
                             <td class="text-center">
                                 <a href="{{route('delete_motivi', $motivo->id)}}">

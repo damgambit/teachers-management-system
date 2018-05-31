@@ -24,7 +24,6 @@
 
                 <thead>
                     <th>Nome materia</th>
-                    <th>Info e docenti</th>
                     <th>Elimina</th>
                 </thead>
 
@@ -33,13 +32,7 @@
                         <tr>
                             <td>{{$materia->nome}}</td>
                             
-                            <td class="text-center">
-                                <a href="{{route('info_materia', $materia->id)}}">
-                                    <button class="btn btn-info">
-                                        <i class="fa fa-info"></i>
-                                    </button>
-                                </a>
-                            </td>
+     
 
                             <td class="text-center">
                                 <a href="{{route('delete_materia', $materia->id)}}">
