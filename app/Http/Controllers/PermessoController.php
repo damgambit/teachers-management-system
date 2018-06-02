@@ -31,7 +31,7 @@ class PermessoController extends Controller
 	{
 
 
-    	$permesso = Permesso::create(PermessoController::handle_create($request));
+    	$permesso = Permesso::create(PermessoHelper::handle_create($request));
 
     	return redirect()->back()->withInput();
 
