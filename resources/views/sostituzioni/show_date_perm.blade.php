@@ -39,19 +39,22 @@
                                   <div class="panel-group">
                                     <div class="panel panel-info">
                                       <div class="panel-heading">Orario Classe</div>
-                                      <div class="panel-body">
+                                      
                                     
                                   
                                         @foreach($orarios[$k] as $orario)
                                           @if($orario->ora == $ora)
-                                            <strong>Docente:</strong><br>
-                                            {{$orario->docente_nome}} {{$orario->docente_cognome}}<br><br>
-                                            <strong>Materia:</strong><br>
-                                            {{$orario->materia_nome}} <br>
+                                            <div class="panel-body">
+                                              <strong>Docente:</strong><br>
+                                              {{$orario->docente_nome}} {{$orario->docente_cognome}}<br><br>
+                                              <strong>Materia:</strong><br>
+                                              {{$orario->materia_nome}} <br>
+                                            </div>
+                                            
                                           @endif
                                         @endforeach
 
-                                      </div>
+                                      
                                     </div>
 
                                   @foreach($v as $elem)
