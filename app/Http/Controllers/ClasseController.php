@@ -25,7 +25,7 @@ class ClasseController extends Controller
 
 	{		
 
-    	$classe = Classe::create(ClasseHelper::handle_create$($request));
+    	$classe = Classe::create(ClasseHelper::handle_create($request));
 
     	return redirect()->back()->withInput();
 
