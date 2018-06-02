@@ -22,14 +22,13 @@ trait SostituzioneHelper
 				        $join->on('permessos.ora', '=', 'orarios.ora')
 				             ->on('permessos.giorno', '=', 'orarios.giorno')
 				             ->on('permessos.docente_id', '=', 'orarios.docente_id');
-				             //->on('permessos.docente_id', '=', 'orarios.docente_id');
 				    })
 					->join('classes', 'orarios.classe_id', '=', 'classes.id')
 					->join('seziones', 'classes.sezione_id', '=', 'seziones.id')
 					->where('data', $date)
 					->orderBy('anno')
 					->orderBy('sigla')
-					->select('anno',  'sigla')
+					->select('anno',  'sigla', 'classes.id as id')
 					->distinct()
 					->get();
 
@@ -161,6 +160,32 @@ trait SostituzioneHelper
 				->distinct()
 				->get();
 
+
+    }
+
+
+    public static function get_orario_for_classe($classe, $giorno)
+
+    {
+
+
+    	$orario = Orario::where('classe_id', $classe->id)
+						->join('docentes', 'docentes.id', '=', 'orarios.docente_id')
+						->join('materias', 'materias.id', '=', 'orarios.materia_id')
+						->select('orarios.id as orario_id', 
+								 'docentes.id as docente_id',
+								 'materias.id as materia_id',
+								 'ora',
+								 'giorno',
+								 'docentes.nome as docente_nome',
+								 'docentes.cognome as docente_cognome',
+								 'materias.nome as materia_nome')
+						->orderBy('ora')
+						->where('giorno',  $giorno)
+						->get();
+
+
+		return $orario;
 
     }
 

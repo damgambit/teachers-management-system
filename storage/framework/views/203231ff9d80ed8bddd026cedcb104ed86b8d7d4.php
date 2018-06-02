@@ -28,21 +28,47 @@
                   <?php echo e(csrf_field()); ?>
 
 
-                    <?php if($errors->any()): ?>
-                        <div class="alert alert-danger">
-                            <ul>
-                                <?php $__currentLoopData = $errors->all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $error): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                    <li><?php echo e($error); ?></li>
-                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                            </ul>
-                        </div>
-                    <?php endif; ?>
-                  <button type="submit" class="btn btn-primary">Orario</button>
+
+                  <button type="submit" class="btn btn-primary">Orario Docente</button>
 
                  </fieldset>
 
-              
-              
+            </form>
+
+
+            <br><hr><br>
+
+
+
+            <form action="<?php echo e(route('show_orario_classe')); ?>" method="get">
+              <fieldset>
+     
+                <h2>Orario Classe</h2>                 
+                    
+            
+                  
+                  <div class="form-group">
+                    <label for="classe_id">Classe</label>
+                    <select class="form-control" name="classe_id" required>
+                        <?php $__currentLoopData = $classes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $classe): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <option value="<?php echo e($classe->id); ?>">
+                                <?php echo e($classe->anno); ?> <?php echo e($classe->sigla); ?> 
+                            </option>
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                    </select>
+                  </div>  
+
+
+
+
+                  <?php echo e(csrf_field()); ?>
+
+
+         
+                  <button type="submit" class="btn btn-primary">Orario Classe</button>
+
+                 </fieldset>
+
             </form>
 
 

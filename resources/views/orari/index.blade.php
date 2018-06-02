@@ -29,21 +29,46 @@
 
                   {{csrf_field()}}
 
-                    @if ($errors->any())
-                        <div class="alert alert-danger">
-                            <ul>
-                                @foreach ($errors->all() as $error)
-                                    <li>{{ $error }}</li>
-                                @endforeach
-                            </ul>
-                        </div>
-                    @endif
-                  <button type="submit" class="btn btn-primary">Orario</button>
+
+                  <button type="submit" class="btn btn-primary">Orario Docente</button>
 
                  </fieldset>
 
-              
-              
+            </form>
+
+
+            <br><hr><br>
+
+
+
+            <form action="{{route('show_orario_classe')}}" method="get">
+              <fieldset>
+     
+                <h2>Orario Classe</h2>                 
+                    
+            
+                  
+                  <div class="form-group">
+                    <label for="classe_id">Classe</label>
+                    <select class="form-control" name="classe_id" required>
+                        @foreach($classes as $classe)
+                            <option value="{{$classe->id}}">
+                                {{$classe->anno}} {{$classe->sigla}} 
+                            </option>
+                        @endforeach
+                    </select>
+                  </div>  
+
+
+
+
+                  {{csrf_field()}}
+
+         
+                  <button type="submit" class="btn btn-primary">Orario Classe</button>
+
+                 </fieldset>
+
             </form>
 
 

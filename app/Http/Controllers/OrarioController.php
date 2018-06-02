@@ -27,6 +27,14 @@ class OrarioController extends Controller
 
 	}
 
+	public function show_orario_classe(Request $request) 
+
+	{	
+
+		return view('orari.show_orario_classe', OrarioHelper::show_data($request));
+
+	}
+
 
 
 	public function create_orario_doc(Request $request) 
@@ -50,6 +58,9 @@ class OrarioController extends Controller
 
 
 	}
+
+
+
 
 
 	public function delete($orario_id, $docente_id)

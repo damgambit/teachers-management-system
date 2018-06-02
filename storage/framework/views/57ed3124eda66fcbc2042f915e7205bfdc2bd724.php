@@ -29,54 +29,76 @@
                         <tbody >
                           <?php $__currentLoopData = $results; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $k => $v): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                             <tr>
-                              <td width="5%">
-                                <br><br><br>
-                                <?php echo e($k); ?>
-
+                              <td class="text-center" width="5%">
+                                <h1><?php echo e($k); ?></h1>
                               </td>
                               <?php $__currentLoopData = [1,2,3,4,5,6,7]; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $ora): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                <?php $__currentLoopData = $v; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $elem): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                  <?php if($ora == $elem->ora): ?>
-                                    <td width="13.5%">
-                                      <strong>Docente: </strong><?php echo e($elem->cognome); ?> <br>
-                                      <strong>Motivo: </strong><?php echo e($elem->descrizione); ?> <br><br>
+                                <td width="13.5%">
+                                  <div class="panel-group">
+                                    <div class="panel panel-info">
+                                      <div class="panel-heading">Orario Classe</div>
+                                      <div class="panel-body">
+                                    
+                                  
+                                        <?php $__currentLoopData = $orarios[$k]; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $orario): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                          <?php if($orario->ora == $ora): ?>
+                                            <strong>Docente:</strong><br>
+                                            <?php echo e($orario->docente_nome); ?> <?php echo e($orario->docente_cognome); ?><br><br>
+                                            <strong>Materia:</strong><br>
+                                            <?php echo e($orario->materia_nome); ?> <br>
+                                          <?php endif; ?>
+                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
-                                      <?php $__currentLoopData = $sostituziones; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $sostituzione): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                      </div>
+                                    </div>
 
-                                        <?php if($sostituzione->orario_id == $elem->orario_id): ?>
-                                          <strong>Sostituto: </strong><?php echo e($sostituzione->cognome); ?>
+                                  <?php $__currentLoopData = $v; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $elem): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 
-                                        <?php endif; ?>
-                                      <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                    <?php if($ora == $elem->ora): ?>
+                                        <div class="panel panel-warning">
+                                          <div class="panel-heading">Permesso</div>
+                                          <div class="panel-body">
+                                            <strong>Docente: </strong><?php echo e($elem->cognome); ?> <br>
+                                            <strong>Motivo: </strong><?php echo e($elem->descrizione); ?> <br><br>
+
+                                            <?php $__currentLoopData = $sostituziones; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $sostituzione): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+
+                                              <?php if($sostituzione->orario_id == $elem->orario_id): ?>
+                                                <strong>Sostituto: </strong><?php echo e($sostituzione->cognome); ?>
+
+                                              <?php endif; ?>
+                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
 
-                                      <strong>Sostituzione: </strong>
-                                      <form action="<?php echo e(route('add_sostituzione')); ?>" method="post">
-                                        <?php echo e(csrf_field()); ?>
+                                            <strong>Sostituzione: </strong>
+                                            <form action="<?php echo e(route('add_sostituzione')); ?>" method="post">
+                                              <?php echo e(csrf_field()); ?>
 
-                                        <select name="docente_id">
-                                          <?php $__currentLoopData = $docs[$elem->anno.$elem->sigla][$ora]; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $doc): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                            
-                                            <option value="<?php echo e($doc->docente_id_sos); ?>">
-                                                <?php echo e($doc->cognome); ?> (<?php echo e($doc->descrizione); ?>)
-                                            </option>
-                                            
-                                          <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                                        </select>
+                                              <select name="docente_id">
+                                                <?php $__currentLoopData = $docs[$elem->anno.$elem->sigla][$ora]; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $doc): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                  
+                                                  <option value="<?php echo e($doc->docente_id_sos); ?>">
+                                                      <?php echo e($doc->cognome); ?> (<?php echo e($doc->descrizione); ?>)
+                                                  </option>
+                                                  
+                                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                              </select>
 
-                                        <input type="hidden"  value="<?php echo e($date); ?>" name="date" />
+                                              <input type="hidden"  value="<?php echo e($date); ?>" name="date" />
 
-                                        <input type="hidden" value="<?php echo e($elem->orario_id); ?>" name="orario_id" />
+                                              <input type="hidden" value="<?php echo e($elem->orario_id); ?>" name="orario_id" />
 
-                                        <button type="submit" class="btn btn-info">
-                                          Crea Sostituzione
-                                        </button>
-                                      </form>
-                                    </td>
-                                  <?php else: ?>
-                                    <td width="13.5%"></td>
-                                  <?php endif; ?>
-                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                              <button type="submit" class="btn btn-info">
+                                                Crea Sostituzione
+                                              </button>
+                                            </form>
+                                          </div>
+                                        </div>
+                                    
+                                    <?php endif; ?>
+                                  <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                </div>
+                                </td>
                               <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                             </tr>
                           <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
