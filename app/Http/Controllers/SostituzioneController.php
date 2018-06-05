@@ -47,7 +47,7 @@ class SostituzioneController extends Controller
 
 			foreach($permessos as $permesso) {
 
-				$docentes[$permesso->ora] = SostituzioneHelper::get_docs_for_permesso($permesso);
+				$docentes[$permesso->ora] = SostituzioneHelper::get_docs_for_permesso($permesso, $date);
 				$docentes[$permesso->ora]->push($post); $docentes[$permesso->ora]->push($ant);
 
 			}
