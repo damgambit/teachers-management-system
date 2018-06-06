@@ -36,8 +36,10 @@
                                 {{$k}}
                               </td>
                               @foreach([1,2,3,4,5,6,7] as $ora)
+                                <?php $test = false ?>
                                 @foreach($v as $elem)
                                   @if($ora == $elem->ora)
+                                    <?php $test = true; ?>
                                     <td width="13.5%">
                                       <strong>Docente: </strong>{{$elem->cognome}} <br>
                                       <strong>Motivo: </strong>{{$elem->descrizione}} <br><br>
@@ -72,10 +74,13 @@
                                         </button>
                                       </form>
                                     </td>
-                                  @else
-                                    <td width="13.5%"></td>
+                                
                                   @endif
                                 @endforeach
+
+                                @if($test == false)
+                                  <td width="13.5%"></td>
+                                @endif
                               @endforeach
                             </tr>
                           @endforeach
