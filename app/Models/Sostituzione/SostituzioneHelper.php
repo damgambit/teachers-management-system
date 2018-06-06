@@ -155,7 +155,7 @@ trait SostituzioneHelper
 					     ->on('sostituziones.docente_id', '!=', 'docentes.id');
 					})				
 				->where('anno', 1)
-				->where('sigla', 'DDD')
+				->whereIn('sigla', ['DDD', 'RRR', 'DDPP'])
 				->where('permessos.giorno', $permesso->giorno)
 				->where('permessos.ora', $permesso->ora)
 				->where('sostituziones.date', '=', $date)

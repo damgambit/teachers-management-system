@@ -97,7 +97,15 @@
                                                     @foreach($classes as $classe)
 
                                                         <option value="{{$classe->id}}">
-                                                            {{$classe->anno}} {{$classe->sezione->sigla}} 
+                                                            @if($classe->sezione->sigla == "DDD")
+                                                                Disp
+                                                            @elseif($classe->sezione->sigla == "RRR")
+                                                                Ric
+                                                            @elseif($classe->sezione->sigla == "DDPP")
+                                                                Disp Pag
+                                                            @else
+                                                                {{$classe->anno}} {{$classe->sezione->sigla}} 
+                                                            @endif
                                                         </option>
 
                                                     @endforeach
