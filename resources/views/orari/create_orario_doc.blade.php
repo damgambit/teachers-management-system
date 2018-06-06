@@ -49,6 +49,14 @@
                                                                 <i class="fa fa-trash"></i>
                                                         </a>
 
+                                                    @elseif($orario->sigla == "DDPP") 
+
+                                                        <a href="{{route('delete_orario', [$orario->id, $docente->id])}}" 
+                                                            class="btn btn-info text-center">
+                                                                DP
+                                                                <i class="fa fa-trash"></i>
+                                                        </a>
+
                                                     @else
 
                                                         <a href="{{route('delete_orario', [$orario->id, $docente->id])}}" 
