@@ -31,11 +31,11 @@
                         <tbody >
                           @foreach($results as $k => $v)
                             <tr>
-                              <td width="5%">
-                                <br><br><br>
-                                {{$k}}
+                              <td class="text-center" width="5%">
+                                <h1>{{$k}}</h1>
                               </td>
                               @foreach([1,2,3,4,5,6,7] as $ora)
+<<<<<<< HEAD
                                 <?php $test = false ?>
                                 @foreach($v as $elem)
                                   @if($ora == $elem->ora)
@@ -81,6 +81,75 @@
                                 @if($test == false)
                                   <td width="13.5%"></td>
                                 @endif
+=======
+                                <td width="13.5%">
+                                  <div class="panel-group">
+                                    <div class="panel panel-info">
+                                      <div class="panel-heading">Orario Classe</div>
+                                      
+                                    
+                                  
+                                        @foreach($orarios[$k] as $orario)
+                                          @if($orario->ora == $ora)
+                                            <div class="panel-body">
+                                              <strong>Docente:</strong><br>
+                                              {{$orario->docente_nome}} {{$orario->docente_cognome}}<br><br>
+                                              <strong>Materia:</strong><br>
+                                              {{$orario->materia_nome}} <br>
+                                            </div>
+                                            
+                                          @endif
+                                        @endforeach
+
+                                      
+                                    </div>
+
+                                  @foreach($v as $elem)
+
+                                    @if($ora == $elem->ora)
+                                        <div class="panel panel-warning">
+                                          <div class="panel-heading">Permesso</div>
+                                          <div class="panel-body">
+                                            <strong>Docente: </strong>{{$elem->cognome}} <br>
+                                            <strong>Motivo: </strong>{{$elem->descrizione}} <br><br>
+
+                                            @foreach($sostituziones as $sostituzione)
+
+                                              @if($sostituzione->orario_id == $elem->orario_id)
+                                                <strong>Sostituto: </strong>{{$sostituzione->cognome}}
+                                              @endif
+                                            @endforeach
+
+
+                                            <strong>Sostituzione: </strong>
+                                            <form action="{{route('add_sostituzione')}}" method="post">
+                                              {{csrf_field()}}
+                                              <select name="docente_id">
+                                                @foreach($docs[$elem->anno.$elem->sigla][$ora] as $doc)
+                                                  
+                                                  <option value="{{$doc->docente_id_sos}}">
+                                                      {{$doc->cognome}} ({{$doc->descrizione}})
+                                                  </option>
+                                                  
+                                                @endforeach
+                                              </select>
+
+                                              <input type="hidden"  value="{{$date}}" name="date" />
+
+                                              <input type="hidden" value="{{$elem->orario_id}}" name="orario_id" />
+
+                                              <button type="submit" class="btn btn-info">
+                                                Crea Sostituzione
+                                              </button>
+                                            </form>
+                                          </div>
+                                        </div>
+                                    
+                                    @endif
+                                  @endforeach
+                                </div>
+                                </td>
+>>>>>>> 6093b11ffc82347673f9a14f892681452342c46e
                               @endforeach
                             </tr>
                           @endforeach

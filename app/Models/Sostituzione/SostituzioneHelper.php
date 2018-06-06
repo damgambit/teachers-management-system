@@ -22,14 +22,13 @@ trait SostituzioneHelper
 				        $join->on('permessos.ora', '=', 'orarios.ora')
 				             ->on('permessos.giorno', '=', 'orarios.giorno')
 				             ->on('permessos.docente_id', '=', 'orarios.docente_id');
-				             //->on('permessos.docente_id', '=', 'orarios.docente_id');
 				    })
 					->join('classes', 'orarios.classe_id', '=', 'classes.id')
 					->join('seziones', 'classes.sezione_id', '=', 'seziones.id')
 					->where('data', $date)
 					->orderBy('anno')
 					->orderBy('sigla')
-					->select('anno',  'sigla')
+					->select('anno',  'sigla', 'classes.id as id')
 					->distinct()
 					->get();
 
@@ -117,52 +116,90 @@ trait SostituzioneHelper
 
 
     	return Permesso::join('orarios', function ($join) {
-			$join->on('permessos.ora', '=', 'orarios.ora')
-			     ->on('permessos.giorno', '=', 'orarios.giorno')
-			     ->on('permessos.docente_id', '=', 'orarios.docente_id');
-			})
-			->join('classes', 'orarios.classe_id', '=', 'classes.id')
-			->join('seziones', 'classes.sezione_id', '=', 'seziones.id')
-			->join('docentes', 'permessos.docente_id', '=', 'docentes.id')
-			->join('motivos', 'motivos.id', '=', 'permessos.motivo_id')
-			->where('data', $date)
-			->where('anno', $classe->anno)
-			->where('sigla', $classe->sigla)
-			->orderBy('anno')
-			->orderBy('sigla')
-			->select('orarios.id as orario_id', 'nome', 'cognome', 'motivos.descrizione', 'orarios.giorno', 'orarios.ora', 'anno', 'sigla')
-			->get();
+							$join->on('permessos.ora', '=', 'orarios.ora')
+							     ->on('permessos.giorno', '=', 'orarios.giorno')
+							     ->on('permessos.docente_id', '=', 'orarios.docente_id');
+							})
+						->join('classes', 'orarios.classe_id', '=', 'classes.id')
+						->join('seziones', 'classes.sezione_id', '=', 'seziones.id')
+						->join('docentes', 'permessos.docente_id', '=', 'docentes.id')
+						->join('motivos', 'motivos.id', '=', 'permessos.motivo_id')
+						->where('data', $date)
+						->where('anno', $classe->anno)
+						->where('sigla', $classe->sigla)
+						->orderBy('anno')
+						->orderBy('sigla')
+						->select('orarios.id as orario_id', 'nome', 'cognome', 'motivos.descrizione', 'orarios.giorno', 'orarios.ora', 'anno', 'sigla')
+						->get();
 
 
     }
 
 
-    public static function get_docs_for_permesso($permesso)
+    public static function get_docs_for_permesso($permesso, $date)
 
     {
 
-    	return Orario::where('orarios.ora', $permesso->ora)
+    	$docs = Orario::where('orarios.ora', $permesso->ora)
 				->where('orarios.giorno', $permesso->giorno)
 				->join('docentes', 'orarios.docente_id', '=', 'docentes.id')
 				->join('classes', 'orarios.classe_id', '=', 'classes.id')
 				->join('seziones', 'classes.sezione_id', '=', 'seziones.id')
 				->join('permessos', 'permessos.docente_id', '!=', 'orarios.docente_id')
+				->join('orarios as o2', function ($join) {
+					$join->on('o2.ora', '=', 'orarios.ora')
+					     ->on('o2.giorno', '=', 'orarios.giorno');
+					})
+				->join('sostituziones', function ($join) {
+					$join->on('sostituziones.orario_id', '=', 'o2.id')
+					     ->on('sostituziones.docente_id', '!=', 'docentes.id');
+					})				
 				->where('anno', 1)
 				->where('sigla', 'DDD')
 				->where('permessos.giorno', $permesso->giorno)
 				->where('permessos.ora', $permesso->ora)
+				->where('sostituziones.date', '=', $date)
 				->select('orarios.id', 
 					'orarios.giorno', 
 					'descrizione', 
 					'docentes.id as docente_id_sos',
 					'nome',
-					'cognome')
+					'cognome', 
+					'sostituziones.*')
 				->orderBy('docentes.nome')
 				->distinct()
 				->get();
 
+		return $docs;
 
     }
+
+
+    public static function get_orario_for_classe($classe, $giorno)
+
+    {
+
+
+    	$orario = Orario::where('classe_id', $classe->id)
+						->join('docentes', 'docentes.id', '=', 'orarios.docente_id')
+						->join('materias', 'materias.id', '=', 'orarios.materia_id')
+						->select('orarios.id as orario_id', 
+								 'docentes.id as docente_id',
+								 'materias.id as materia_id',
+								 'ora',
+								 'giorno',
+								 'docentes.nome as docente_nome',
+								 'docentes.cognome as docente_cognome',
+								 'materias.nome as materia_nome')
+						->orderBy('ora')
+						->where('giorno',  $giorno)
+						->get();
+
+
+		return $orario;
+
+    }
+
 
 
 
