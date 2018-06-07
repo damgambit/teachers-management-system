@@ -29,10 +29,10 @@
                   <tbody>
                     @foreach($permessos as $permesso)
                       <tr>
-                        <td width="36%">{{$permesso->nome.' '.$permesso->cognome}}</td>
+                        <td width="29%">{{$permesso->nome.' '.$permesso->cognome}}</td>
 
                         @foreach([1,2,3,4,5,6,7] as $ora)
-                          <td width="4%">
+                          <td width="5%">
                             @if($ora == $permesso->ora)
                               {{$permesso->anno.' '.$permesso->sigla}}
                             @endif
@@ -65,18 +65,18 @@
                     @foreach($sostituziones as $sostituzione)
                       @if($sostituzione->cognome != 'entrata_posticipata' && $sostituzione->cognome != 'uscita_anticipata')
                         <tr>
-                          <td width="20%">{{$sostituzione->nome.' '.$sostituzione->cognome}}</td>
+                          <td width="15%">{{$sostituzione->nome.' '.$sostituzione->cognome}}</td>
 
                           @foreach([1,2,3,4,5,6,7] as $ora)
-                            <td width="4%">
+                            <td width="5%">
                               @if($ora == $sostituzione->ora)
                                 {{$sostituzione->anno.' '.$sostituzione->sigla}}
                               @endif
                             </td>
                           @endforeach
 
-                          <td width="26%">{{$sostituzione->materia_nome}}</td>
-                          <td width="26%"></td>
+                          <td width="25%">{{$sostituzione->materia_nome}}</td>
+                          <td width="25%"></td>
                         </tr>
                       @endif
                     @endforeach
