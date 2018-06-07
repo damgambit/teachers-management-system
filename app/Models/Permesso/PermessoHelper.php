@@ -18,7 +18,7 @@ trait PermessoHelper
     {
        
 		$motivos = Motivo::all();
-		$docentes = Docente::all();
+		$docentes = Docente::orderBy('cognome')->get();
 		$permessos = Permesso::join('docentes', 'docentes.id', '=', 'permessos.docente_id')
 							   ->join('motivos', 'motivos.id', '=', 'permessos.motivo_id')
 							   ->select('permessos.id', 
