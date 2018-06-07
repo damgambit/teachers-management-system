@@ -60,7 +60,7 @@
                                                     @else
 
                                                         <a href="{{route('delete_orario', [$orario->id, $docente->id])}}" 
-                                                            class="btn btn-success text-center">
+                                                            class="btn btn-danger text-center">
                                                                 {{$orario->anno}} 
                                                                 {{$orario->sigla}}
                                                                 <i class="fa fa-trash"></i>
@@ -80,7 +80,7 @@
                     </table>    
                     <button class="btn btn-info text-center">D</button>: Disposizione <br>
                     <button class="btn btn-warning text-center">R</button>: Ricevimento <br>
-                    <button class="btn btn-success text-center">DP</button>: Disposizione A Pagamento
+                    <button class="btn btn-danger text-center">DP</button>: Disposizione A Pagamento
                     
                     @foreach(['lun', 'mar', 'mer', 'gio', 'ven'] as $giorno)
                         <table class="table table-bordered table-hover table-condensed table-striped">
