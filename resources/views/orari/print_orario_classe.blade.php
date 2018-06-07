@@ -1,31 +1,25 @@
-<head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+@extends('layouts.app')
 
-        {{--CSRF Token--}}
-        <meta name="csrf-token" content="{{ csrf_token() }}">
+@section('body_class','nav-md')
 
-        {{--Title and Meta--}}
-        @meta
-
-        {{--Common App Styles--}}
-        {{ Html::style(mix('assets/app/css/app.css')) }}
-
-        {{--Styles--}}
-        @yield('styles')
-
-        {{--Head--}}
-        @yield('head')
-
-</head>
-    <div class="container">
+@section('page')
+    <div class="container body">
+        <div class="main_container">
+            @section('header')
+                @include('admin.sections.navigation')
+                @include('admin.sections.header')
+            @show
+<div class="container">
 
         <div class="col-lg-12">
 
               <fieldset>
+     
+                <h2>Orario</h2> 
 
                 <h3>Orario classe: {{$classe->anno." ".$classe->sigla}}</h3> 
+
+                <a href="{{route('print_orario_classe').'?classe_id='.$classe->id}}" class="btn btn-info">Scarica PDF</a>              
                     
             
                   
@@ -58,17 +52,21 @@
                                         @if($classe->sigla != 'DDD' && $classe->sigla != 'DDPP')
                                           <div class="panel panel-info">
                                             
-                                                <strong>Docente:</strong>
-                                                {{$orario->docente_nome}} {{$orario->docente_cognome}}<br>
+                                              <div class="panel-body">
+                                                <strong>Docente:</strong><br>
+                                                {{$orario->docente_nome}} {{$orario->docente_cognome}}<br><br>
                                                 
-                                                  <strong>Materia:</strong>
+                                                  <strong>Materia:</strong><br>
                                                   {{$orario->materia_nome}} <br>
                                                 
+                                              </div>
                                             
                                           </div>
                                         @else
                                           <div class="panel panel-info">
+                                            <div class="panel-body">
                                               {{$orario->docente_nome}} {{$orario->docente_cognome}}
+                                            </div>
                                           </div>
                                         @endif
                                       @endif
@@ -97,15 +95,14 @@
         </div>
 
     </div>
-    
-
-@section('scripts')
-    @parent
-    {{ Html::script(mix('assets/admin/js/dashboard.js')) }}
-@endsection
+        </div>
+    </div>
+@stop
 
 @section('styles')
-    @parent
-    {{ Html::style(mix('assets/admin/css/dashboard.css')) }}
+    {{ Html::style(mix('assets/admin/css/admin.css')) }}
 @endsection
 
+@section('scripts')
+    {{ Html::script(mix('assets/admin/js/admin.js')) }}
+@endsection
