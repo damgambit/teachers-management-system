@@ -54,7 +54,6 @@ class SostituzioneController extends Controller
 				 
 
 			}
-			dd($docentes);
 			
 			$results[$classe->anno.$classe->sigla] = $permessos;
 
