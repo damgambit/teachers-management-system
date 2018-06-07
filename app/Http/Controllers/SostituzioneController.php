@@ -79,6 +79,55 @@ class SostituzioneController extends Controller
 	}
 
 
+	public function print_date_perm_doc(Request $request)
+
+	{
+
+		$date = $request->date;
+
+		$permessos = Permesso::where('data', $date)
+							->join('orarios', function ($join) {
+						        $join->on('permessos.ora', '=', 'orarios.ora')
+						             ->on('permessos.giorno', '=', 'orarios.giorno')
+						             ->on('permessos.docente_id', '=', 'orarios.docente_id');
+						    })
+						    ->join('classes', 'orarios.classe_id', '=', 'classes.id')
+							->join('seziones', 'classes.sezione_id', '=', 'seziones.id')
+							->join('docentes', 'docentes.id', '=', 'permessos.docente_id')
+							->join('motivos', 'motivos.id', '=', 'permessos.motivo_id')
+							->orderBy('cognome')
+							->get();
+
+		$sostituziones = SostituzioneHelper::get_sostituziones($date);
+
+		return view('sostituzioni.print_date_perm_doc', ['date' => $date, 'permessos' => $permessos, 'sostituziones' => $sostituziones]);
+
+	}
+
+
+	public function print_date_perm_classe(Request $request)
+
+	{
+
+		$date = $request->date;
+
+		$sostituziones = SostituzioneHelper::get_sostituziones($date);
+
+		$utils = ['1' => '8:50', 
+				 '2' => '9:45',
+				 '3' => '10:40',
+				 '4' => '11:55',
+				 '5' => '12:50',
+				 '6' => '13:50',
+				 '7' => '14:50',
+				];
+
+		return view('sostituzioni.print_date_perm_classe', ['date' => $date, 'sostituziones' => $sostituziones, 'utils' => $utils]);
+
+
+	}
+
+
 	public function add_sostituzione(Request $request)
 
 	{

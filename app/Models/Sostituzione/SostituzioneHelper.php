@@ -78,7 +78,18 @@ trait SostituzioneHelper
     	$sostituziones = Sostituzione::where('date', $date)
 						->join('orarios', 'orarios.id', '=', 'sostituziones.orario_id')
 						->join('docentes', 'docentes.id', '=', 'sostituziones.docente_id')
+						->join('materias', 'materias.id', '=', 'orarios.materia_id')
+						->join('classes', 'classes.id', '=', 'orarios.classe_id')
+						->join('seziones', 'seziones.id', '=', 'classes.sezione_id')
+						->select('orarios.*', 
+								 'sostituziones.*', 
+								 'docentes.*', 
+								 'materias.nome as materia_nome', 
+								 'classes.*', 
+								 'seziones.*')
 						->get();
+
+
 
 		if($sostituziones == null) {
 
