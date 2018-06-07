@@ -56,6 +56,8 @@
                             <option value="{{$classe->id}}">
                                 @if($classe->sigla == 'DDD')
                                   Disposizioni
+                                @elseif($classe->sigla == 'DDPP')
+                                  Disposizioni A Pagamento
                                 @else
                                   {{$classe->anno}} {{$classe->sigla}} 
                                 @endif

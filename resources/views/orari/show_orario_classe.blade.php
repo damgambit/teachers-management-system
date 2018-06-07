@@ -45,8 +45,10 @@
                                           <div class="panel-body">
                                             <strong>Docente:</strong><br>
                                             {{$orario->docente_nome}} {{$orario->docente_cognome}}<br><br>
-                                            <strong>Materia:</strong><br>
-                                            {{$orario->materia_nome}} <br>
+                                            @if($classe->sigla != 'DDD' && $classe->sigla != 'DDPP')
+                                              <strong>Materia:</strong><br>
+                                              {{$orario->materia_nome}} <br>
+                                            @endif
                                           </div>
                                         </div>
                                       @endif
