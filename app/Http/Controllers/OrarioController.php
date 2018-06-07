@@ -4,18 +4,17 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App;
 
 use App\Docente;
 use App\Classe;
 use App\Orario;
 use App\Materia;
 
+use App\Models\Orario\OrarioHelper;
+
 use Dompdf\Dompdf;
 
-
-
-
-use App\Models\Orario\OrarioHelper;
 
 class OrarioController extends Controller
 
@@ -42,13 +41,9 @@ class OrarioController extends Controller
 	
 	{
 
-		return view('orari.print_orario_classe', OrarioHelper::show_data($request));	
-		
-		$dompdf = new Dompdf();        
 
-        $dompdf->loadHtml(view('orari.print_orario_classe', OrarioHelper::show_data($request)));
-        $dompdf->render();	
-        $dompdf->stream();	
+        return view('orari.print_orario_classe', OrarioHelper::show_data($request));
+       	
 
 	}
 

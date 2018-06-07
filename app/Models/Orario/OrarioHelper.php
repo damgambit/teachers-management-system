@@ -25,12 +25,14 @@ trait OrarioHelper
 							->get();
 
 
+
 		$classes = Classe::join('seziones', 'seziones.id', '=', 'classes.sezione_id')
 							->where('sigla', '!=', 'RRR')
 							->select('classes.id', 'anno', 'sigla')
 							->orderBy('anno')
 							->orderBy('sigla')
 							->get();
+
 
 		return ['docentes' => $docentes, 'classes' => $classes];
 
