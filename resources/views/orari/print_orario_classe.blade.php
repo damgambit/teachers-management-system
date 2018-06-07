@@ -1,8 +1,7 @@
 @extends('layouts.app')
 
-@section('body_class','nav-md')
 
-@section('page')
+
     <div class="container body" style="background-color: white">
         <div class="main_container" style="background-color: white">
 
@@ -84,12 +83,16 @@
     </div>
         </div>
     </div>
-@stop
 
 @section('styles')
     {{ Html::style(mix('assets/admin/css/admin.css')) }}
 @endsection
+<style type="text/css">
+  body {
+    background:white !important;
 
+  }
+</style>
 @section('scripts')
     {{ Html::script(mix('assets/admin/js/admin.js')) }}
 @endsection
