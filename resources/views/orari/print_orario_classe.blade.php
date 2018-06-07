@@ -46,7 +46,7 @@
                                             
 
                                                 
-                                                {{$orario->docente_nome}} {{$orario->docente_cognome}}<br>
+                                                <strong>{{$orario->docente_nome}} {{$orario->docente_cognome}}</strong><br>
                                                 
                                                   {{$orario->materia_nome}} <br>
                                                 
@@ -89,6 +89,7 @@
 <style type="text/css">
   body {
     background:white !important;
+    color:black !important;
 
   }
 </style>
