@@ -135,6 +135,43 @@ trait SostituzioneHelper
 
     }
 
+    public static function get_co_doc($permesso, $date, $classe) 
+
+    {
+
+    	$doc = Orario::where('orarios.ora', $permesso->ora)
+				->where('orarios.giorno', $permesso->giorno)
+				->join('docentes', 'orarios.docente_id', '=', 'docentes.id')
+				->join('classes', 'orarios.classe_id', '=', 'classes.id')
+				->join('seziones', 'classes.sezione_id', '=', 'seziones.id')
+				->join('permessos', 'permessos.docente_id', '!=', 'orarios.docente_id')
+				->join('orarios as o2', function ($join) {
+					$join->on('o2.ora', '=', 'orarios.ora')
+					     ->on('o2.giorno', '=', 'orarios.giorno');
+					})
+				->join('sostituziones', function ($join) {
+					$join->on('sostituziones.orario_id', '=', 'o2.id')
+					     ->on('sostituziones.docente_id', '!=', 'docentes.id');
+					})				
+				->where('permessos.giorno', $permesso->giorno)
+				->where('permessos.ora', $permesso->ora)
+				->where('classes.id', $classe->id)
+				->where('sostituziones.date', '=', $date)
+				->select('orarios.id', 
+					'orarios.giorno', 
+					'descrizione', 
+					'docentes.id as docente_id_sos',
+					'nome',
+					'cognome', 
+					'sostituziones.*')
+				->orderBy('docentes.nome')
+				->distinct()
+				->first();
+
+		return $doc;
+
+    }
+
 
     public static function get_docs_for_permesso($permesso, $date)
 
