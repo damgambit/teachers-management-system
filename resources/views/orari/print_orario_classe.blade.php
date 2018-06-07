@@ -5,10 +5,7 @@
 @section('page')
     <div class="container body">
         <div class="main_container">
-            @section('header')
-                @include('admin.sections.navigation')
-                @include('admin.sections.header')
-            @show
+
 <div class="container">
 
         <div class="col-lg-12">
