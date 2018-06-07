@@ -12,11 +12,11 @@
               <fieldset>
      
                 <h3>Orario classe: 
-                  @if($orario->sigla == 'DDD')
+                  @if($classe->sigla == 'DDD')
                     Disposizioni
-                  @elseif($orario->sigla == 'DDPP')
+                  @elseif($classe->sigla == 'DDPP')
                     Disposizioni a Pagamento
-                  @elseif($orario->sigla == 'RRR')
+                  @elseif($classe->sigla == 'RRR')
                     Ricevimenti
                   @else
                     {{$classe->anno." ".$classe->sigla}}
