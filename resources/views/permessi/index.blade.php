@@ -112,7 +112,7 @@
                             <td>{{$permesso->giorno}}</td>
                             <td>{{$permesso->ora}}</td>
                             <td>{{$permesso->data}}</td>
-                            <td>{{$permesso->nome}}</td>
+                            <td>{{$permesso->cognome}}</td>
                             <td>{{$permesso->descrizione}}</td>
                             @if($permesso->recupero === 1)
                                 <td>

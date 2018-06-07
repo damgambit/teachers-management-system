@@ -52,8 +52,13 @@
                     <label for="classe_id">Classe</label>
                     <select class="form-control" name="classe_id" required>
                         @foreach($classes as $classe)
+
                             <option value="{{$classe->id}}">
-                                {{$classe->anno}} {{$classe->sigla}} 
+                                @if($classe->sigla == 'DDD')
+                                  Disposizioni
+                                @else
+                                  {{$classe->anno}} {{$classe->sigla}} 
+                                @endif
                             </option>
                         @endforeach
                     </select>

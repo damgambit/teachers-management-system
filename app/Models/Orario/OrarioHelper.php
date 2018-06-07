@@ -26,7 +26,6 @@ trait OrarioHelper
 
 
 		$classes = Classe::join('seziones', 'seziones.id', '=', 'classes.sezione_id')
-							->where('sigla', '!=', 'DDD')
 							->where('sigla', '!=', 'RRR')
 							->select('classes.id', 'anno', 'sigla')
 							->orderBy('anno')
