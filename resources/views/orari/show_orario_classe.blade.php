@@ -54,7 +54,9 @@
                                             
                                           </div>
                                         @else
-                                          {{$orario->docente_nome}} {{$orario->docente_cognome}}<br>
+                                          <div class="panel panel-info">
+                                            {{$orario->docente_nome}} {{$orario->docente_cognome}}
+                                          </div>
                                         @endif
                                       @endif
                                     @endforeach
