@@ -12,7 +12,7 @@
 
                 <h3>Orario classe: {{$classe->anno." ".$classe->sigla}}</h3> 
 
-                <a href="{{route('print_orario_classe').'?classe_id='.$classe->id}}" class="btn btn-info">Scarica PDF</a>              
+                <a href="{{route('print_orario_classe').'?classe_id='.$classe->id}}" class="btn btn-info">Stampa</a>              
                     
             
                   

@@ -8,7 +8,9 @@
 
               <fieldset>
      
-                <h2>Orario {{$docente->nome}}</h2> 
+                <h2>Orario {{$docente->nome}} {{$docente->cognome}}</h2> 
+                <a href="{{route('print_orario_docente').'?docente_id='.$docente->id}}" class="btn btn-info">Stampa</a>              
+
 
                     <table class="table table-bordered table-hover table-condensed table-striped">
                         <thead>

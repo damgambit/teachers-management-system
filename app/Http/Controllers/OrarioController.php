@@ -59,6 +59,14 @@ class OrarioController extends Controller
 
 	}
 
+	public function print_orario_docente(Request $request)
+
+	{
+
+		return view('orari.print_orario_docente', OrarioHelper::create_data($request));
+
+	}
+
 
 	public function create_orario_doc_add($giorno, $ora, Request $request)
 
