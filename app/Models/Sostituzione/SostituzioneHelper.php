@@ -164,7 +164,7 @@ trait SostituzioneHelper
 					'nome',
 					'cognome', 
 					'sostituziones.*')
-				->orderBy('docentes.nome')
+				->orderBy('docentes.cognome')
 				->distinct()
 				->first();
 

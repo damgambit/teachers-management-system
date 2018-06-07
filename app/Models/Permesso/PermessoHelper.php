@@ -26,7 +26,7 @@ trait PermessoHelper
 							   			'permessos.data', 
 							   			'permessos.ora',
 							   			'permessos.recupero',
-							   			'docentes.nome',
+							   			'docentes.cognome',
 							   			'motivos.descrizione')
 							   ->get();
 
