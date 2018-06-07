@@ -46,21 +46,18 @@
                                         @if($classe->sigla != 'DDD' && $classe->sigla != 'DDPP')
                                           <div class="panel panel-info">
                                             
-                                              <div class="panel-body">
-                                                <strong>Docente:</strong><br>
-                                                {{$orario->docente_nome}} {{$orario->docente_cognome}}<br><br>
+
+                                                <strong>Docente:</strong>
+                                                {{$orario->docente_nome}} {{$orario->docente_cognome}}<br>
                                                 
-                                                  <strong>Materia:</strong><br>
+                                                  <strong>Materia:</strong>
                                                   {{$orario->materia_nome}} <br>
                                                 
-                                              </div>
                                             
                                           </div>
                                         @else
                                           <div class="panel panel-info">
-                                            <div class="panel-body">
                                               {{$orario->docente_nome}} {{$orario->docente_cognome}}
-                                            </div>
                                           </div>
                                         @endif
                                       @endif
