@@ -16,7 +16,7 @@
                     
             
                   
-                  <table class="table">
+                  <table class="table table-bordered">
                         <thead>
                             
                             <th>Giorno</th>
