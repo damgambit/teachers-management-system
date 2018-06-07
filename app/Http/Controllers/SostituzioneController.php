@@ -67,7 +67,6 @@ class SostituzioneController extends Controller
 			$orarios[$classe->anno.$classe->sigla] = SostituzioneHelper::get_orario_for_classe($classe, $permessos[0]->giorno);
 		}	
 
-		dd($docs);
 
 		return view('sostituzioni.show_date_perm', [
 			'date' => $date, 
