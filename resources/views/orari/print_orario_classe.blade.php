@@ -3,10 +3,10 @@
 @section('body_class','nav-md')
 
 @section('page')
-    <div class="container body">
-        <div class="main_container">
+    <div class="container body" style="background-color: white">
+        <div class="main_container" style="background-color: white">
 
-<div class="container">
+<div class="container" style="background-color: white">
 
         <div class="col-lg-12" style="background-color: white">
 
@@ -44,7 +44,6 @@
                                     @foreach($orarios[$ora] as $orario)
                                       @if($orario->giorno == $giorno)
                                         @if($classe->sigla != 'DDD' && $classe->sigla != 'DDPP')
-                                          <div class="panel panel-info">
                                             
 
                                                 <strong>Docente:</strong>
@@ -54,11 +53,8 @@
                                                   {{$orario->materia_nome}} <br>
                                                 
                                             
-                                          </div>
                                         @else
-                                          <div class="panel panel-info">
                                               {{$orario->docente_nome}} {{$orario->docente_cognome}}
-                                          </div>
                                         @endif
                                       @endif
                                     @endforeach
