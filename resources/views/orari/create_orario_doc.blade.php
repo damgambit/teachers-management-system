@@ -52,7 +52,7 @@
                                                     @elseif($orario->sigla == "DDPP") 
 
                                                         <a href="{{route('delete_orario', [$orario->id, $docente->id])}}" 
-                                                            class="btn btn-info text-center">
+                                                            class="btn btn-danger text-center">
                                                                 DP
                                                                 <i class="fa fa-trash"></i>
                                                         </a>
@@ -60,7 +60,7 @@
                                                     @else
 
                                                         <a href="{{route('delete_orario', [$orario->id, $docente->id])}}" 
-                                                            class="btn btn-danger text-center">
+                                                            class="btn btn-success text-center">
                                                                 {{$orario->anno}} 
                                                                 {{$orario->sigla}}
                                                                 <i class="fa fa-trash"></i>
