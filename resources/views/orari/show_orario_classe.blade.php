@@ -40,17 +40,22 @@
                                   <div class="panel-group">
                                     @foreach($orarios[$ora] as $orario)
                                       @if($orario->giorno == $giorno)
-
-                                        <div class="panel panel-info">
-                                          <div class="panel-body">
-                                            <strong>Docente:</strong><br>
-                                            {{$orario->docente_nome}} {{$orario->docente_cognome}}<br><br>
-                                            @if($classe->sigla != 'DDD' && $classe->sigla != 'DDPP')
-                                              <strong>Materia:</strong><br>
-                                              {{$orario->materia_nome}} <br>
-                                            @endif
+                                        @if($classe->sigla != 'DDD' && $classe->sigla != 'DDPP')
+                                          <div class="panel panel-info">
+                                            
+                                              <div class="panel-body">
+                                                <strong>Docente:</strong><br>
+                                                {{$orario->docente_nome}} {{$orario->docente_cognome}}<br><br>
+                                                
+                                                  <strong>Materia:</strong><br>
+                                                  {{$orario->materia_nome}} <br>
+                                                
+                                              </div>
+                                            
                                           </div>
-                                        </div>
+                                        @else
+                                          {{$orario->docente_nome}} {{$orario->docente_cognome}}<br>
+                                        @endif
                                       @endif
                                     @endforeach
                                   </div>
