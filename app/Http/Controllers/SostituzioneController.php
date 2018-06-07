@@ -50,7 +50,6 @@ class SostituzioneController extends Controller
 				$docentes[$permesso->ora] = SostituzioneHelper::get_docs_for_permesso($permesso, $date);
 				$co_doc = SostituzioneHelper::get_co_doc($permesso, $date, $classe);
 				$docentes[$permesso->ora]->push($co_doc);
-				dd($co_doc);
 				$docentes[$permesso->ora]->push($post); $docentes[$permesso->ora]->push($ant);
 				 
 
