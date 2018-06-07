@@ -201,8 +201,7 @@ trait SostituzioneHelper
 					'descrizione', 
 					'docentes.id as docente_id_sos',
 					'nome',
-					'cognome', 
-					'sostituziones.*')
+					'cognome')
 				->orderBy('docentes.nome')
 				->distinct()
 				->get();
