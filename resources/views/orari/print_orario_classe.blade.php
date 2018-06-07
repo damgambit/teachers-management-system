@@ -8,7 +8,7 @@
 
 <div class="container">
 
-        <div class="col-lg-12">
+        <div class="col-lg-12" style="background-color: white">
 
               <fieldset>
      
