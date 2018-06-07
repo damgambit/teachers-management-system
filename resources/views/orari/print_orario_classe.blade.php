@@ -63,7 +63,7 @@
                                                 
                                             
                                         @else
-                                              {{$orario->docente_nome}} {{$orario->docente_cognome}}
+                                              {{$orario->docente_nome}} {{$orario->docente_cognome}} <br>
                                         @endif
                                       @endif
                                     @endforeach

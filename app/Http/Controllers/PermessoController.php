@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 use App\Permesso;
 use App\Motivo;
 use App\Docente;
+use App\Orario;
+use App\Sostituzione;
 
 
 use App\Models\Permesso\PermessoHelper;
@@ -32,6 +34,21 @@ class PermessoController extends Controller
 
 
     	$permesso = Permesso::create(PermessoHelper::handle_create($request));
+
+    	$orario = Orario::where('ora', $permesso->ora)
+    					->where('giorno', $permesso->giorno)
+    					->where('docente_id', $permesso->docente_id)
+    					->first();
+
+
+
+    	$instance = Sostituzione::create([
+			'orario_id' => $orario->id, 
+			'docente_id' => $permesso->docente_id, 
+			'date' => $permesso->data]
+		);
+
+		
 
     	return redirect()->back()->withInput();
 

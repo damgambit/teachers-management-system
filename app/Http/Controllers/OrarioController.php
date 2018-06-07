@@ -33,6 +33,7 @@ class OrarioController extends Controller
 
 	{	
 
+
 		return view('orari.show_orario_classe', OrarioHelper::show_data($request));
 
 	}
