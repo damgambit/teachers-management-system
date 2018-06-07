@@ -45,10 +45,9 @@
                                         @if($classe->sigla != 'DDD' && $classe->sigla != 'DDPP')
                                             
 
-                                                <strong>Docente:</strong>
+                                                
                                                 {{$orario->docente_nome}} {{$orario->docente_cognome}}<br>
                                                 
-                                                  <strong>Materia:</strong>
                                                   {{$orario->materia_nome}} <br>
                                                 
                                             
