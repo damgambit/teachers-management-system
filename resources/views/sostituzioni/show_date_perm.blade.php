@@ -12,8 +12,8 @@
 
                 <h3>Orari scoperti data: {{$date}}</h3>                
                     
-                <a href="{{route('print_date_perm_doc').'?date='.$date}}" class="btn btn-info">Stampa Assenti e Sostituti</a>              
-                <a href="{{route('print_date_perm_classe').'?date='.$date}}" class="btn btn-info">Stampa Variazione Orario</a>              
+                <a href="{{route('print_date_perm_doc').'?date='.$date}}" class="btn btn-info">Stampa Assenti e Sostituti</a><br>          
+                <a href="{{route('print_date_perm_classe').'?date='.$date}}" class="btn btn-warning">Stampa Variazione Orario</a>              
 
                   
                   <table class="table table-bordered table-hover table-condensed fixed table-striped">
