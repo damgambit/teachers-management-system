@@ -11,7 +11,18 @@
 
               <fieldset>
      
-                <h3>Orario classe: {{$classe->anno." ".$classe->sigla}}</h3> 
+                <h3>Orario classe: 
+                  @if($orario->sigla == 'DDD')
+                    Disposizioni
+                  @elseif($orario->sigla == 'DDPP')
+                    Disposizioni a Pagamento
+                  @elseif($orario->sigla == 'RRR')
+                    Ricevimenti
+                  @else
+                    {{$classe->anno." ".$classe->sigla}}
+                  @endif
+
+                </h3> 
 
                     
             
